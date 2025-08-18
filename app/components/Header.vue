@@ -28,12 +28,12 @@
                     >
                 </nav>
 
-                <!-- Đăng tin button -->
+                <!-- Đăng tin miễn phí button -->
                 <NuxtLink
-                    to="/post"
+                    to="/"
                     class="ml-4 bg-yellow-500 hover:bg-yellow-600 text-white font-semibold py-2 px-4 rounded-lg transition-colors"
                 >
-                    Đăng tin
+                    Đăng tin miễn phí
                 </NuxtLink>
             </div>
 
@@ -97,13 +97,13 @@
                 >Về chúng tôi</NuxtLink
             >
 
-            <!-- Mobile Đăng tin button -->
+            <!-- Mobile Đăng tin miễn phí button -->
             <NuxtLink
-                to="/post"
+                to="/"
                 @click="isOpen = false"
                 class="block mt-2 bg-yellow-500 hover:bg-yellow-600 text-white font-semibold py-2 px-4 rounded-lg text-center transition-colors"
             >
-                Đăng tin
+                Đăng tin miễn phí
             </NuxtLink>
         </div>
     </header>
