@@ -7,7 +7,7 @@
             <div>
                 <h2 class="text-xl font-bold mb-2">Trọ Phú Giáo</h2>
                 <p class="text-gray-400 text-sm">
-                    Nơi kết nối nhà đất Phú Giáo. Uy tín - Minh bạch - Tận tâm
+                    Nơi kết nối nhà trọ Phú Giáo. Uy tín - Minh bạch - Tận tâm
                     phục vụ.
                 </p>
                 <p class="text-gray-400 text-sm mt-3">
@@ -22,12 +22,7 @@
                 <ul class="space-y-2 text-sm text-gray-300">
                     <li>
                         <NuxtLink to="/projects" class="hover:text-blue-400">
-                            Dự án
-                        </NuxtLink>
-                    </li>
-                    <li>
-                        <NuxtLink to="/news" class="hover:text-blue-400">
-                            Tin tức
+                            Phòng tro
                         </NuxtLink>
                     </li>
                     <li>
@@ -64,7 +59,7 @@
         <div
             class="mt-8 border-t border-gray-700 pt-4 text-center text-sm text-gray-500"
         >
-            &copy; 2025 BĐS Phú Giáo. All rights reserved.
+            &copy; 2025 Trọ Phú Giáo. All rights reserved.
         </div>
     </footer>
 </template>

@@ -1,7 +1,7 @@
 <template>
     <section class="py-10 px-4 bg-white">
         <div class="max-w-7xl mx-auto relative">
-            <h2 class="text-2xl font-semibold mb-6">Bất động sản tiềm năng</h2>
+            <h2 class="text-2xl font-semibold mb-6">Phòng Trọ tiềm năng</h2>
             <Swiper
                 :modules="[Navigation, Autoplay, Pagination]"
                 :slides-per-view="1.3"

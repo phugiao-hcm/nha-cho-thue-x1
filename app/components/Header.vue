@@ -8,6 +8,35 @@
                 Trọ Phú Giáo
             </NuxtLink>
 
+            <!-- Desktop Navigation + Button -->
+            <div class="hidden md:flex items-center space-x-4">
+                <nav class="flex space-x-6 font-medium text-gray-700">
+                    <NuxtLink
+                        to="/"
+                        class="hover:text-blue-600 transition-colors"
+                        >Trang chủ</NuxtLink
+                    >
+                    <NuxtLink
+                        to="/projects"
+                        class="hover:text-blue-600 transition-colors"
+                        >Phòng trọ</NuxtLink
+                    >
+                    <NuxtLink
+                        to="/about"
+                        class="hover:text-blue-600 transition-colors"
+                        >Về chúng tôi</NuxtLink
+                    >
+                </nav>
+
+                <!-- Đăng tin button -->
+                <NuxtLink
+                    to="/post"
+                    class="ml-4 bg-yellow-500 hover:bg-yellow-600 text-white font-semibold py-2 px-4 rounded-lg transition-colors"
+                >
+                    Đăng tin
+                </NuxtLink>
+            </div>
+
             <!-- Hamburger Icon for Mobile -->
             <button
                 @click="isOpen = !isOpen"
@@ -45,23 +74,6 @@
                     />
                 </svg>
             </button>
-
-            <!-- Desktop Navigation -->
-            <nav class="hidden md:flex space-x-6 font-medium text-gray-700">
-                <NuxtLink to="/" class="hover:text-blue-600 transition-colors"
-                    >Trang chủ</NuxtLink
-                >
-                <NuxtLink
-                    to="/projects"
-                    class="hover:text-blue-600 transition-colors"
-                    >Dự án</NuxtLink
-                >
-                <NuxtLink
-                    to="/about"
-                    class="hover:text-blue-600 transition-colors"
-                    >Về chúng tôi</NuxtLink
-                >
-            </nav>
         </div>
 
         <!-- Mobile Navigation -->
@@ -70,22 +82,28 @@
                 to="/"
                 @click="isOpen = false"
                 class="block hover:text-blue-600 transition-colors"
+                >Trang chủ</NuxtLink
             >
-                Trang chủ
-            </NuxtLink>
             <NuxtLink
                 to="/projects"
                 @click="isOpen = false"
                 class="block hover:text-blue-600 transition-colors"
+                >Phòng trọ</NuxtLink
             >
-                Dự án
-            </NuxtLink>
             <NuxtLink
                 to="/about"
                 @click="isOpen = false"
                 class="block hover:text-blue-600 transition-colors"
+                >Về chúng tôi</NuxtLink
             >
-                Về chúng tôi
+
+            <!-- Mobile Đăng tin button -->
+            <NuxtLink
+                to="/post"
+                @click="isOpen = false"
+                class="block mt-2 bg-yellow-500 hover:bg-yellow-600 text-white font-semibold py-2 px-4 rounded-lg text-center transition-colors"
+            >
+                Đăng tin
             </NuxtLink>
         </div>
     </header>

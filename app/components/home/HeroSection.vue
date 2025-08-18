@@ -9,7 +9,7 @@
         <!-- Nội dung chính -->
         <div class="relative z-10 text-center px-4 max-w-3xl">
             <h1 class="text-4xl md:text-5xl font-bold mb-4">
-                Tìm Ngôi Nhà Phù Hợp Của Bạn
+                Tìm Phòng Phù Hợp Của Bạn
             </h1>
             <p class="text-lg md:text-xl mb-6">
                 Khám phá những căn phòng đầy đủ tiện nghi.

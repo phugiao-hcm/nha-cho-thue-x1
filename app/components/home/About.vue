@@ -5,7 +5,7 @@
             <div class="text-center mb-12">
                 <h1 class="text-4xl font-bold text-blue-600">Về Chúng Tôi</h1>
                 <p class="mt-4 text-gray-600 max-w-2xl mx-auto">
-                    BĐS Phú Giáo - Kết nối nhà đất Phú Giáo uy tín, minh bạch và
+                    Trọ Phú Giáo - Kết nối nhà trọ Phú Giáo uy tín, minh bạch và
                     tận tâm.
                 </p>
             </div>
@@ -22,7 +22,7 @@
                         Chúng tôi là ai?
                     </h2>
                     <p class="text-gray-700 leading-relaxed">
-                        BĐS Phú Giáo là đơn vị chuyên môi giới nhà đất, đất nền,
+                        Trọ Phú Giáo là đơn vị chuyên môi giới nhà đất, đất nền,
                         đất vườn, đất thổ cư tại khu vực huyện Phú Giáo, tỉnh
                         Bình Dương. Với đội ngũ tư vấn tận tâm và kinh nghiệm,
                         chúng tôi cam kết mang lại giải pháp phù hợp và an toàn

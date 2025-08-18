@@ -1,73 +1,34 @@
 <template>
     <div
-        class="max-w-6xl mx-auto px-4 md:px-0 grid gap-4 sm:grid-cols-1 md:grid-cols-3"
+        class="max-w-6xl mx-auto mt-6 px-4 md:px-0 grid gap-4 sm:grid-cols-1 md:grid-cols-3"
     >
         <!-- Bên trái: Hình ảnh và thông tin -->
         <div class="md:col-span-2 space-y-4">
-            <div class="w-full overflow-hidden">
-                <!-- Main Swiper -->
-                <!-- <Swiper
-                    v-if="thumbsSwiperReady"
-                    :thumbs="{ swiper: thumbsSwiper }"
-                    :space-between="10"
-                    :pagination="{ clickable: true }"
-                    :navigation="true"
-                    class="rounded-lg overflow-hidden"
-                >
-                    <SwiperSlide
-                        v-for="(img, i) in property.images"
-                        :key="'main-' + i"
-                    >
-                        <img
-                            :src="img"
-                            class="w-full h-64 sm:h-56 md:h-64 lg:h-72 object-cover rounded"
-                        />
-                    </SwiperSlide>
-                </Swiper>
-
-                <Swiper
-                    @swiper="setThumbsSwiper"
-                    :space-between="5"
-                    :slides-per-view="
-                        property.images.length >= 3 ? 3 : property.images.length
-                    "
-                    watch-slides-progress
-                    watch-slides-visibility
-                    class="mt-2"
-                >
-                    <SwiperSlide
-                        v-for="(img, i) in property.images"
-                        :key="'thumb-' + i"
-                        class="cursor-pointer"
-                    >
-                        <img
-                            :src="img"
-                            class="w-full h-16 sm:h-16 md:h-20 object-cover rounded border-2 border-transparent"
-                            :class="{ 'border-blue-500': activeIndex === i }"
-                            @click="onThumbnailClick(i)"
-                        />
-                    </SwiperSlide>
-                </Swiper> -->
+            <div class="w-full mx-auto overflow-hidden grid grid-cols-1 gap-4">
                 <!-- Main Swiper -->
                 <swiper
-                    :style="{
-                        '--swiper-navigation-color': '#fff',
-                        '--swiper-pagination-color': '#fff',
-                    }"
-                    :loop="true"
+                    class="w-full rounded-lg overflow-hidden"
                     :space-between="10"
+                    :loop="true"
                     :navigation="true"
+                    :pagination="{ clickable: true }"
                     :thumbs="{ swiper: thumbsSwiper }"
                     :modules="modules"
-                    class="mySwiper2"
+                    :breakpoints="{
+                        0: { slidesPerView: 1, spaceBetween: 0 },
+                        640: { slidesPerView: 1, spaceBetween: 5 },
+                        768: { slidesPerView: 1, spaceBetween: 8 },
+                        1024: { slidesPerView: 1, spaceBetween: 10 },
+                    }"
                 >
                     <swiper-slide
                         v-for="(img, i) in property.images"
-                        :key="'main-' + i"
+                        :key="i"
+                        class="box-border"
                     >
                         <img
                             :src="img"
-                            class="w-full h-64 sm:h-56 md:h-72 object-cover rounded"
+                            class="w-full h-48 sm:h-56 md:h-64 lg:h-80 object-cover"
                         />
                     </swiper-slide>
                 </swiper>
@@ -81,7 +42,7 @@
                     :freeMode="true"
                     :watchSlidesProgress="true"
                     :modules="modules"
-                    class="mySwiper mt-2"
+                    class="w-full"
                 >
                     <swiper-slide
                         v-for="(img, i) in property.images"
@@ -118,44 +79,6 @@
                 {{ property.address }}
             </div>
 
-            <!-- PHẦN THÔNG TIN CHI TIẾT -->
-            <div class="bg-white rounded-lg shadow mt-4 md:mt-6">
-                <div class="divide-y">
-                    <div class="flex justify-between items-center p-3">
-                        <div class="flex items-center gap-2">
-                            <Icon
-                                name="mdi:ruler-square"
-                                class="w-5 h-5 text-gray-600"
-                            />
-                            <span>Diện tích</span>
-                        </div>
-                        <span class="font-medium">{{ property.area }} m²</span>
-                    </div>
-                    <div class="flex justify-between items-center p-3">
-                        <div class="flex items-center gap-2">
-                            <Icon
-                                name="mdi:sofa"
-                                class="w-5 h-5 text-gray-600"
-                            />
-                            <span>Tình trạng nội thất</span>
-                        </div>
-                        <span class="font-medium">{{ property.interior }}</span>
-                    </div>
-                    <div class="flex justify-between items-center p-3">
-                        <div class="flex items-center gap-2">
-                            <Icon
-                                name="mdi:cash"
-                                class="w-5 h-5 text-gray-600"
-                            />
-                            <span>Số tiền cọc</span>
-                        </div>
-                        <span class="font-medium"
-                            >{{ property.deposit }} đ/tháng</span
-                        >
-                    </div>
-                </div>
-            </div>
-
             <!-- MÔ TẢ CHI TIẾT -->
             <div class="bg-white rounded-lg shadow p-4 mt-4 md:mt-6">
                 <h2 class="font-bold text-lg mb-3">Mô tả chi tiết</h2>
@@ -177,6 +100,28 @@
                         Hiện SĐT
                     </button>
                 </div>
+            </div>
+
+            <!-- Section Google Maps -->
+            <div class="w-full h-64 md:h-96 rounded-lg overflow-hidden">
+                <iframe
+                    src="https://www.google.com/maps?q=10.8008,106.6832&hl=vi&z=15&output=embed"
+                    width="100%"
+                    height="450"
+                    style="border: 0"
+                    allowfullscreen=""
+                    loading="lazy"
+                ></iframe>
+
+                <!-- <iframe
+                    :src="mapUrl"
+                    width="100%"
+                    height="100%"
+                    class="border-0"
+                    allowfullscreen=""
+                    loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"
+                ></iframe> -->
             </div>
         </div>
 
@@ -213,6 +158,8 @@
             </div>
         </div>
     </div>
+
+    <News />
 </template>
 
 <script setup>
@@ -222,6 +169,7 @@ import "swiper/css";
 import "swiper/css/free-mode";
 import "swiper/css/navigation";
 import "swiper/css/thumbs";
+import News from "../../components/projects/News.vue";
 
 // modules Swiper
 import { FreeMode, Navigation, Thumbs } from "swiper/modules";
@@ -241,7 +189,7 @@ const property = {
     id: "1",
     title: "Phòng mới 2 cửa lớn đón gió mát mẻ rộng rãi. FULL nội thất",
     images: [
-        "https://placehold.co/600x400",
+        "https://placehold.co/200x400",
         "https://placehold.co/600x401",
         "https://placehold.co/600x402",
     ],
@@ -269,6 +217,8 @@ const showPhone = ref(false);
 const maskedPhone = computed(() =>
     showPhone.value ? "0929621234" : "092962 ***"
 );
+
+// const mapUrl = `https://www.google.com/maps/embed/v1/place?key=YOUR_GOOGLE_MAPS_API_KEY&q=${property.latitude},${property.longitude}`;
 </script>
 
 <style>

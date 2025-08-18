@@ -34,7 +34,6 @@
 <script setup>
 import { reactive, computed } from "vue";
 import PropertyCard from "./PropertyCard.vue";
-import FilterSidebar from "./FilterSidebar.vue";
 
 const filters = reactive({
     type: "",
