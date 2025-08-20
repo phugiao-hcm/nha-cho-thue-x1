@@ -15,12 +15,12 @@
 
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
                 <PropertyCard
-                    v-for="(item, index) in filteredProperties"
+                    v-for="(item, index) in projects"
                     :key="index"
                     :property="item"
                 />
                 <p
-                    v-if="filteredProperties.length === 0"
+                    v-if="projects.length === 0"
                     class="col-span-full text-center text-gray-500 mt-8"
                 >
                     Không có bất động sản phù hợp.
@@ -32,8 +32,16 @@
 
 
 <script setup>
-import { reactive, computed } from "vue";
+import { reactive, computed, ref, onMounted } from "vue";
 import PropertyCard from "./PropertyCard.vue";
+import { getProjectList } from "~/apis/projects";
+
+const projects = ref([]);
+
+onMounted(async () => {
+    projects.value = await getProjectList();
+    console.log("projects loaded:", projects.value);
+});
 
 const filters = reactive({
     type: "",

@@ -2,6 +2,7 @@
 import tailwindcss from "@tailwindcss/vite";
 
 export default defineNuxtConfig({
+    plugins: ["~/plugins/firebaseConfig.ts"],
     ssr: false, // vì GitHub Pages chỉ hỗ trợ static
     target: "static", // không bắt buộc nhưng rõ ràng
     app: {
