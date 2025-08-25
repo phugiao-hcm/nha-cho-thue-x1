@@ -81,7 +81,11 @@ export default defineNuxtConfig({
             ],
         },
     },
-
+    modules: [
+    '@nuxtjs/robots',
+    '@nuxtjs/seo',
+    '@nuxtjs/sitemap',
+  ],
     site: {
         url: "https://phugiao-hcm.github.io", // 🔁 sửa đúng URL GitHub Pages của bạn
     },
