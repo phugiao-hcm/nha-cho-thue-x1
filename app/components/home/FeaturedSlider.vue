@@ -6,7 +6,7 @@
             >
                 Phòng Trọ tiềm năng
                 <span
-                    class="absolute left-0 -bottom-1 w-20 h-1 bg-orange-500 rounded-full"
+                    class="absolute left-0 -bottom-2 w-30 h-1 bg-orange-500 rounded-full"
                 ></span>
             </h2>
             <p class="text-gray-600 mb-8 max-w-xl">
