@@ -5,6 +5,11 @@
         >
             <!-- Logo -->
             <NuxtLink to="/" class="text-2xl font-extrabold text-orange-600">
+                <img
+                    src="/images/og-image.png"
+                    alt="Logo"
+                    class="h-8 inline mr-2"
+                />
                 Trọ Phú Giáo
             </NuxtLink>
 

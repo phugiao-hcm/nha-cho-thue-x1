@@ -28,7 +28,7 @@
                     >
                         <img
                             :src="img"
-                            class="w-full h-48 sm:h-56 md:h-64 lg:h-80 object-cover"
+                            class="w-full h-48 sm:h-56 md:h-64 lg:h-80 object-scale-down"
                         />
                     </swiper-slide>
                 </swiper>
@@ -38,7 +38,7 @@
                     @swiper="setThumbsSwiper"
                     :loop="true"
                     :space-between="10"
-                    :slides-per-view="4"
+                    :slides-per-view="4.5"
                     :freeMode="true"
                     :watchSlidesProgress="true"
                     :modules="modules"
@@ -169,7 +169,7 @@ import "swiper/css";
 import "swiper/css/free-mode";
 import "swiper/css/navigation";
 import "swiper/css/thumbs";
-import News from "../../components/projects/News.vue";
+import News from "@/components/posts/News.vue";
 
 // modules Swiper
 import { FreeMode, Navigation, Thumbs } from "swiper/modules";
@@ -189,9 +189,13 @@ const property = {
     id: "1",
     title: "Phòng mới 2 cửa lớn đón gió mát mẻ rộng rãi. FULL nội thất",
     images: [
-        "https://placehold.co/200x400",
-        "https://placehold.co/600x401",
-        "https://placehold.co/600x402",
+        "https://res.cloudinary.com/ds8q7doz2/image/upload/v1755679804/nen-o-tro-hay-chung-cu_1_dumw8m.png",
+        "https://res.cloudinary.com/ds8q7doz2/image/upload/v1755679804/nen-o-tro-hay-chung-cu_1_dumw8m.png",
+        "https://res.cloudinary.com/ds8q7doz2/image/upload/v1755679804/nen-o-tro-hay-chung-cu_1_dumw8m.png",
+        "https://res.cloudinary.com/ds8q7doz2/image/upload/v1755679804/nen-o-tro-hay-chung-cu_1_dumw8m.png",
+        "https://res.cloudinary.com/ds8q7doz2/image/upload/v1755679804/nen-o-tro-hay-chung-cu_1_dumw8m.png",
+        "https://res.cloudinary.com/ds8q7doz2/image/upload/v1755679804/nen-o-tro-hay-chung-cu_1_dumw8m.png",
+        "https://res.cloudinary.com/ds8q7doz2/image/upload/v1755679804/nen-o-tro-hay-chung-cu_1_dumw8m.png",
     ],
     price: 5.5,
     area: 35,
