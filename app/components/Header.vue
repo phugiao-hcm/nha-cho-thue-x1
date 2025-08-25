@@ -17,7 +17,7 @@
                         >Trang chủ</NuxtLink
                     >
                     <NuxtLink
-                        to="/projects"
+                        to="/posts"
                         class="hover:text-blue-600 transition-colors"
                         >Phòng trọ</NuxtLink
                     >
@@ -85,7 +85,7 @@
                 >Trang chủ</NuxtLink
             >
             <NuxtLink
-                to="/projects"
+                to="/posts"
                 @click="isOpen = false"
                 class="block hover:text-blue-600 transition-colors"
                 >Phòng trọ</NuxtLink

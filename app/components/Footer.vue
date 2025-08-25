@@ -22,7 +22,7 @@
                 <ul class="space-y-2 text-sm text-gray-300">
                     <li>
                         <NuxtLink to="/projects" class="hover:text-blue-400">
-                            Phòng tro
+                            Phòng trọ
                         </NuxtLink>
                     </li>
                     <li>

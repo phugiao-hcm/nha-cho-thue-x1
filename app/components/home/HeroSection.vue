@@ -15,7 +15,7 @@
                 Khám phá những căn phòng đầy đủ tiện nghi.
             </p>
             <NuxtLink
-                to="/projects"
+                to="/posts"
                 class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-lg transition"
             >
                 Xem Phòng

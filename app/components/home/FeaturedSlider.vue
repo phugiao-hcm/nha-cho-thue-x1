@@ -2,51 +2,60 @@
     <section class="py-10 px-4 bg-white">
         <div class="max-w-7xl mx-auto relative">
             <h2 class="text-2xl font-semibold mb-6">Phòng Trọ tiềm năng</h2>
-            <Swiper
-                :modules="[Navigation, Autoplay, Pagination]"
-                :slides-per-view="1.3"
-                :space-between="16"
-                :loop="false"
-                :autoplay="{ delay: 4000 }"
-                :pagination="{ clickable: true }"
-                :navigation="{
-                    nextEl: '.swiper-button-next',
-                    prevEl: '.swiper-button-prev',
-                }"
-                :breakpoints="breakpoints"
-                class="group"
-            >
-                <SwiperSlide
-                    v-for="(item, index) in featuredProperties"
-                    :key="index"
+            <template v-if="loading">
+                <div class="flex gap-4 overflow-hidden">
+                    <Skeleton v-for="n in 4" :key="n" />
+                </div>
+            </template>
+            <template v-else>
+                <Swiper
+                    :modules="[Navigation, Autoplay, Pagination]"
+                    :slides-per-view="1.3"
+                    :space-between="16"
+                    :loop="false"
+                    :autoplay="{ delay: 4000 }"
+                    :pagination="{ clickable: true }"
+                    :navigation="{
+                        nextEl: '.swiper-button-next',
+                        prevEl: '.swiper-button-prev',
+                    }"
+                    :breakpoints="breakpoints"
+                    class="group"
+                    :lazy="true"
                 >
-                    <div
-                        class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition duration-300"
+                    <SwiperSlide
+                        v-for="(item, index) in featuredProperties"
+                        :key="index"
                     >
-                        <img
-                            :src="item.image"
-                            :alt="item.title"
-                            class="w-full h-60 object-cover"
-                        />
-                        <div class="p-4">
-                            <h3 class="text-lg font-semibold">
-                                {{ item.title }}
-                            </h3>
-                            <p class="text-blue-600 font-bold mt-2">
-                                {{ item.price }} tỷ
-                            </p>
+                        <div
+                            class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition duration-300"
+                        >
+                            <img
+                                :src="item.image"
+                                :alt="item.title"
+                                class="w-full h-60 object-cover"
+                                loading="lazy"
+                            />
+                            <div class="p-4">
+                                <h3 class="text-lg font-semibold">
+                                    {{ item.title }}
+                                </h3>
+                                <p class="text-blue-600 font-bold mt-2">
+                                    {{ item.price }} tỷ
+                                </p>
+                            </div>
                         </div>
-                    </div>
-                </SwiperSlide>
+                    </SwiperSlide>
 
-                <!-- Nút điều hướng -->
-                <div
-                    class="swiper-button-prev hidden md:flex absolute top-1/2 left-0 transform -translate-y-1/2 z-10 text-gray-800 hover:text-black"
-                ></div>
-                <div
-                    class="swiper-button-next hidden md:flex absolute top-1/2 right-0 transform -translate-y-1/2 z-10 text-gray-800 hover:text-black"
-                ></div>
-            </Swiper>
+                    <!-- Nút điều hướng -->
+                    <div
+                        class="swiper-button-prev hidden md:flex absolute top-1/2 left-0 transform -translate-y-1/2 z-10 text-gray-800 hover:text-black"
+                    ></div>
+                    <div
+                        class="swiper-button-next hidden md:flex absolute top-1/2 right-0 transform -translate-y-1/2 z-10 text-gray-800 hover:text-black"
+                    ></div>
+                </Swiper>
+            </template>
         </div>
     </section>
 </template>
@@ -57,8 +66,13 @@ import { Navigation, Autoplay, Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
+import Skeleton from "~/components/skeleton/CardSliderSkeleton.vue";
+import { ref, onMounted } from "vue";
 
-const featuredProperties = [
+const featuredProperties = ref([]); // ban đầu rỗng
+const loading = ref(true); // trạng thái loading
+
+const mockHotels = [
     {
         slug: "nha-mat-pho-quan-1",
         title: "Nhà phố Phú Giáo 120m²",
@@ -90,6 +104,14 @@ const featuredProperties = [
         image: "images/5.png",
     },
 ];
+
+onMounted(() => {
+    // giả lập gọi API sau 3s
+    setTimeout(() => {
+        featuredProperties.value = mockHotels;
+        loading.value = false;
+    }, 3000);
+});
 
 const breakpoints = {
     640: {

@@ -1,5 +1,5 @@
 <template>
-    <section class="bg-gray-100 py-12">
+    <section class="bg-white py-12">
         <div class="max-w-screen-xl mx-auto px-4">
             <h1
                 class="text-4xl font-extrabold text-blue-700 mb-3 relative inline-block"
@@ -14,17 +14,16 @@
             </p>
 
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
-                <PropertyCard
-                    v-for="(item, index) in projects"
-                    :key="index"
-                    :property="item"
-                />
-                <p
-                    v-if="projects.length === 0"
-                    class="col-span-full text-center text-gray-500 mt-8"
-                >
-                    Không có bất động sản phù hợp.
-                </p>
+                <template v-if="loading">
+                    <Skeleton v-for="n in 4" :key="n" />
+                </template>
+                <template v-else>
+                    <PropertyCard
+                        v-for="(item, index) in projects"
+                        :key="index"
+                        :property="item"
+                    />
+                </template>
             </div>
         </div>
     </section>
@@ -35,11 +34,14 @@
 import { reactive, computed, ref, onMounted } from "vue";
 import PropertyCard from "./PropertyCard.vue";
 import { getProjectList } from "~/apis/projects";
+import Skeleton from "~/components/skeleton/CardSkeleton.vue";
 
 const projects = ref([]);
+const loading = ref(true); // trạng thái loading
 
 onMounted(async () => {
     projects.value = await getProjectList();
+    loading.value = false;
     console.log("projects loaded:", projects.value);
 });
 
