@@ -2,11 +2,11 @@
     <section class="bg-white py-12">
         <div class="max-w-screen-xl mx-auto px-4">
             <h1
-                class="text-4xl font-extrabold text-blue-700 mb-3 relative inline-block"
+                class="text-4xl font-extrabold text-orange-500 mb-3 relative inline-block"
             >
                 Lựa chọn chỗ ở HOT
                 <span
-                    class="absolute left-0 -bottom-1 w-20 h-1 bg-blue-500 rounded-full"
+                    class="absolute left-0 -bottom-1 w-20 h-1 bg-orange-500 rounded-full"
                 ></span>
             </h1>
             <p class="text-gray-600 mb-8 max-w-xl">

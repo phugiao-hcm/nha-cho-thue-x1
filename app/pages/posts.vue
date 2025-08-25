@@ -4,11 +4,11 @@
         <div class="max-w-screen-xl mx-auto px-4">
             <div>
                 <h1
-                    class="text-4xl font-extrabold text-blue-700 mb-3 relative inline-block"
+                    class="text-4xl font-extrabold text-orange-500 mb-3 relative inline-block"
                 >
                     Phòng trọ Phú Giáo, Bình Dương
                     <span
-                        class="absolute left-0 -bottom-1 w-20 h-1 bg-blue-500 rounded-full"
+                        class="absolute left-0 -bottom-1 w-20 h-1 bg-orange-500 rounded-full"
                     ></span>
                 </h1>
                 <p class="text-gray-600 mb-8 max-w-xl">
@@ -45,12 +45,19 @@
                     <!-- Khoảng giá -->
                     <section class="mb-6">
                         <h3 class="font-semibold mb-2">Khoảng giá</h3>
-                        <input type="range" class="w-full" />
+                        <input
+                            id="default-range"
+                            type="range"
+                            value="1000"
+                            min="1500000"
+                            max="10000000"
+                            class="w-full h-3 bg-gray-200 rounded-lg appearance-none cursor-pointer"
+                        />
                         <div
                             class="flex justify-between text-sm text-gray-500 mt-1"
                         >
-                            <span>20.000đ</span>
-                            <span>1.760.000đ</span>
+                            <span>300.000đ</span>
+                            <span>10.000.000đ</span>
                         </div>
                     </section>
 
@@ -59,15 +66,24 @@
                         <h3 class="font-semibold mb-2">Điểm đánh giá</h3>
                         <div class="space-y-2">
                             <label class="flex items-center gap-2">
-                                <input type="checkbox" class="form-checkbox" />
+                                <input
+                                    type="checkbox"
+                                    class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded-sm"
+                                />
                                 ≥ 4.5 ⭐
                             </label>
                             <label class="flex items-center gap-2">
-                                <input type="checkbox" class="form-checkbox" />
+                                <input
+                                    type="checkbox"
+                                    class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded-sm"
+                                />
                                 ≥ 4.0 ⭐
                             </label>
                             <label class="flex items-center gap-2">
-                                <input type="checkbox" class="form-checkbox" />
+                                <input
+                                    type="checkbox"
+                                    class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded-sm"
+                                />
                                 ≥ 3.5 ⭐
                             </label>
                         </div>
@@ -78,19 +94,31 @@
                         <h3 class="font-semibold mb-2">Tiện ích</h3>
                         <div class="space-y-2 text-sm">
                             <label class="flex items-center gap-2">
-                                <input type="checkbox" class="form-checkbox" />
+                                <input
+                                    type="checkbox"
+                                    class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded-sm"
+                                />
                                 Wi-Fi miễn phí
                             </label>
                             <label class="flex items-center gap-2">
-                                <input type="checkbox" class="form-checkbox" />
+                                <input
+                                    type="checkbox"
+                                    class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded-sm"
+                                />
                                 Ghế tình yêu
                             </label>
                             <label class="flex items-center gap-2">
-                                <input type="checkbox" class="form-checkbox" />
+                                <input
+                                    type="checkbox"
+                                    class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded-sm"
+                                />
                                 Lễ tân 24/24
                             </label>
                             <label class="flex items-center gap-2">
-                                <input type="checkbox" class="form-checkbox" />
+                                <input
+                                    type="checkbox"
+                                    class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded-sm"
+                                />
                                 Thang máy
                             </label>
                         </div>

@@ -3,7 +3,7 @@
         <!-- Nút gọi điện nằm trong layout -->
         <a
             href="tel:0937704598"
-            class="hidden md:flex fixed bottom-6 right-6 bg-green-500 text-white p-4 rounded-full shadow-lg hover:bg-green-600 transition duration-300 z-[9999]"
+            class="hidden md:flex fixed bottom-6 right-6 bg-orange-500 text-white p-4 rounded-full shadow-lg hover:bg-orange-600 transition duration-300 z-[9999]"
             aria-label="Gọi ngay"
         >
             <svg

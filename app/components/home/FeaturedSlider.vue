@@ -1,7 +1,17 @@
 <template>
     <section class="py-10 px-4 bg-white">
         <div class="max-w-7xl mx-auto relative">
-            <h2 class="text-2xl font-semibold mb-6">Phòng Trọ tiềm năng</h2>
+            <h2
+                class="text-4xl font-extrabold text-orange-500 mb-3 relative inline-block"
+            >
+                Phòng Trọ tiềm năng
+                <span
+                    class="absolute left-0 -bottom-1 w-20 h-1 bg-orange-500 rounded-full"
+                ></span>
+            </h2>
+            <p class="text-gray-600 mb-8 max-w-xl">
+                Tìm kiếm các chỗ ở đẹp và phù hợp nhất với bạn tại Phú Giáo
+            </p>
             <template v-if="loading">
                 <div class="flex gap-4 overflow-hidden">
                     <Skeleton v-for="n in 4" :key="n" />
@@ -40,7 +50,7 @@
                                 <h3 class="text-lg font-semibold">
                                     {{ item.title }}
                                 </h3>
-                                <p class="text-blue-600 font-bold mt-2">
+                                <p class="text-orange-600 font-bold mt-2">
                                     {{ item.price }} tỷ
                                 </p>
                             </div>
