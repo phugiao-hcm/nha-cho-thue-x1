@@ -5,6 +5,12 @@ export default defineNuxtConfig({
     plugins: ["~/plugins/firebaseConfig.ts"],
     ssr: false, // vì GitHub Pages chỉ hỗ trợ static
     target: "static", // không bắt buộc nhưng rõ ràng
+    ogImage: {
+        enabled: false // ⚠️ tắt vì cần SSR, , Google bot sẽ không đọc được client-side
+    },
+    schemaOrg: {
+        disabled: true // ⚠️ tắt luôn, Google bot sẽ không đọc được client-side
+    },
     app: {
         baseURL: "/nha-cho-thue-x1/", // ⚠️ thay <REPO_NAME> bằng tên repo của bạn
           head: {
@@ -82,10 +88,10 @@ export default defineNuxtConfig({
         },
     },
     modules: [
-    '@nuxtjs/robots',
-    '@nuxtjs/seo',
-    '@nuxtjs/sitemap',
-  ],
+        '@nuxtjs/robots',
+        '@nuxtjs/seo',
+        '@nuxtjs/sitemap',
+    ],
     site: {
         url: "https://phugiao-hcm.github.io", // 🔁 sửa đúng URL GitHub Pages của bạn
     },

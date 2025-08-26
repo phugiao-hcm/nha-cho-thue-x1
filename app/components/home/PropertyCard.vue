@@ -100,7 +100,6 @@ const directionRoom = (viewRoom: number) => {
             return "Hướng Đông";
         case DIRECTION_ROOM.West:
             return "Hướng Tây";
-
         case DIRECTION_ROOM.South:
             return "Hướng Nam";
         case DIRECTION_ROOM.North:
