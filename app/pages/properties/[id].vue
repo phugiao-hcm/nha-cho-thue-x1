@@ -149,7 +149,7 @@
             <!-- Section Google Maps -->
             <div class="w-full h-64 md:h-96 rounded-lg overflow-hidden">
                 <iframe
-                    src="https://www.google.com/maps?q=10.8008,106.6832&hl=vi&z=15&output=embed"
+                    :src="`https://www.google.com/maps?q=${property.latitude},${property.longitude}&hl=vi&z=15&output=embed`"
                     width="100%"
                     height="450"
                     style="border: 0"

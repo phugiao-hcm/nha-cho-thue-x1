@@ -38,7 +38,9 @@
                             />
                         </svg>
                     </P>
-                    <p class="text-sm text-gray-800">
+                    <p
+                        class="text-sm text-gray-800 truncate overflow-hidden whitespace-nowrap"
+                    >
                         {{ property.address }}
                     </p>
                 </div>
