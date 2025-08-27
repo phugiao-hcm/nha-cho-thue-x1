@@ -30,6 +30,7 @@
                         <img
                             :src="img.imagePath"
                             class="w-full h-48 sm:h-56 md:h-64 lg:h-80 object-scale-down"
+                            @click="showLightbox(i)"
                         />
                     </swiper-slide>
                 </swiper>
@@ -55,6 +56,14 @@
                         />
                     </swiper-slide>
                 </swiper>
+
+                <!-- Lightbox popup -->
+                <VueEasyLightbox
+                    :visible="visible"
+                    :imgs="property.imageList.map((x) => x.imagePath)"
+                    :index="currentIndex"
+                    @hide="visible = false"
+                />
             </div>
 
             <!-- Tiêu đề -->
@@ -205,6 +214,7 @@ import "swiper/css/navigation";
 import "swiper/css/thumbs";
 import News from "@/components/posts/News.vue";
 import { getPostDetail } from "~/apis/posts";
+import VueEasyLightbox from "vue-easy-lightbox";
 
 import { useRoute } from "vue-router";
 const route = useRoute();
@@ -223,6 +233,16 @@ const setThumbsSwiper = (swiper) => {
 };
 
 const modules = [FreeMode, Navigation, Thumbs];
+
+// Lightbox state
+const visible = ref(false);
+const currentIndex = ref(0);
+
+const showLightbox = (index) => {
+    currentIndex.value = index;
+    visible.value = true;
+};
+
 // dữ liệu mẫu
 const property = ref(null);
 
