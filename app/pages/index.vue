@@ -1,13 +1,13 @@
 <template>
     <div>
         <HeroSection />
-        <RealEstateSection />
+        <PostListSection />
         <FeaturedSlider />
     </div>
 </template>
 
 <script setup>
 import HeroSection from "../components/home/HeroSection.vue";
-import RealEstateSection from "../components/home/RealEstateSection.vue";
+import PostListSection from "../components/home/PostListSection.vue";
 import FeaturedSlider from "../components/home/FeaturedSlider.vue";
 </script>

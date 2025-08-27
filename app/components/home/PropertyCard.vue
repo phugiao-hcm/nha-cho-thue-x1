@@ -1,12 +1,12 @@
 <template>
-    <NuxtLink :to="`/properties/${property.name}`">
+    <NuxtLink :to="`/properties/${property.nameAccommodation}`">
         <div
             class="rounded shadow hover:shadow-lg transition cursor-pointer bg-white"
         >
             <img
                 :src="
-                    property.images
-                        ? property.images[0]
+                    property.imageList
+                        ? property.imageList[0].imagePath
                         : '/images/og-image.png'
                 "
                 alt="property"
@@ -61,7 +61,7 @@
                         </svg>
                     </p>
                     <p class="text-sm text-gray-600">
-                        {{ property.area }}m² · {{ directionRoom(1) }}
+                        {{ property.area }}m² · {{ SET_TEXT_DIRECTION_ROOM(1) }}
                     </p>
                 </div>
 
@@ -74,7 +74,7 @@
                     <div
                         class="px-2 py-1 bg-green-100 text-green-800 text-xs font-semibold rounded"
                     >
-                        <p class="text-xs text-gray-500">Chỉ còn 2 phòng</p>
+                        <p class="text-xs text-gray-500">Chỉ còn 5 phòng</p>
                     </div>
                 </div>
             </div>
@@ -93,27 +93,4 @@ const props = defineProps({
         required: true,
     },
 });
-
-const directionRoom = (viewRoom: number) => {
-    switch (viewRoom) {
-        case DIRECTION_ROOM.East:
-            return "Hướng Đông";
-        case DIRECTION_ROOM.West:
-            return "Hướng Tây";
-        case DIRECTION_ROOM.South:
-            return "Hướng Nam";
-        case DIRECTION_ROOM.North:
-            return "Hướng Bắc";
-        case DIRECTION_ROOM.Southeast:
-            return "Hướng Đông Nam";
-        case DIRECTION_ROOM.Southwest:
-            return "Hướng Tây Nam";
-        case DIRECTION_ROOM.Northeast:
-            return "Hướng Đông Bắc";
-        case DIRECTION_ROOM.Northwest:
-            return "Hướng Tây Bắc";
-        default:
-            break;
-    }
-};
 </script>

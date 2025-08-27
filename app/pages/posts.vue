@@ -18,7 +18,7 @@
                 </p>
             </div>
 
-            <div class="flex flex-col md:flex-row gap-6 p-6 bg-gray-50">
+            <div class="flex flex-col md:flex-row gap-6 p-0 md:p-6 bg-gray-50">
                 <!-- Main -->
                 <main class="flex-1 order-1 md:order-none">
                     <!-- Mobile Filter Button -->
@@ -77,35 +77,125 @@
                                 class="bg-white rounded-2xl shadow p-4 flex flex-col md:flex-row gap-4"
                             >
                                 <img
-                                    :src="hotel.image"
+                                    :src="
+                                        hotel.imageList
+                                            ? hotel.imageList[0].imagePath
+                                            : '/images/og-image.png'
+                                    "
                                     class="w-full md:w-[200px] h-[150px] object-cover rounded-xl"
                                 />
                                 <div class="flex-1">
-                                    <h3 class="font-semibold">
-                                        {{ hotel.name }}
+                                    <h3 class="font-semibold mb-2">
+                                        {{ hotel.nameAccommodation }}
                                     </h3>
-                                    <p class="text-sm text-gray-500">
-                                        {{ hotel.rating }} ·
-                                        {{ hotel.reviews }} đánh giá
-                                    </p>
-                                    <p class="text-sm text-gray-500">
-                                        {{ hotel.distance }}
-                                    </p>
+
+                                    <div class="flex mb-2 gap-1 items-center">
+                                        <P>
+                                            <svg
+                                                xmlns="http://www.w3.org/2000/svg"
+                                                fill="none"
+                                                viewBox="0 0 24 24"
+                                                stroke-width="1.5"
+                                                stroke="currentColor"
+                                                class="size-4 w-4 h-4 text-gray-500 mr-1"
+                                            >
+                                                <path
+                                                    stroke-linecap="round"
+                                                    stroke-linejoin="round"
+                                                    d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"
+                                                />
+                                                <path
+                                                    stroke-linecap="round"
+                                                    stroke-linejoin="round"
+                                                    d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z"
+                                                />
+                                            </svg>
+                                        </P>
+                                        <p class="text-sm text-gray-800">
+                                            {{ hotel.address }}
+                                        </p>
+                                    </div>
+
+                                    <div class="flex items-center gap-1 mb-2">
+                                        <p>
+                                            <svg
+                                                xmlns="http://www.w3.org/2000/svg"
+                                                fill="none"
+                                                viewBox="0 0 24 24"
+                                                stroke-width="1.5"
+                                                stroke="currentColor"
+                                                class="size-4 w-4 h-4 text-gray-500 mr-1"
+                                            >
+                                                <path
+                                                    stroke-linecap="round"
+                                                    stroke-linejoin="round"
+                                                    d="M3.75 3.75v4.5m0-4.5h4.5m-4.5 0L9 9M3.75 20.25v-4.5m0 4.5h4.5m-4.5 0L9 15M20.25 3.75h-4.5m4.5 0v4.5m0-4.5L15 9m5.25 11.25h-4.5m4.5 0v-4.5m0 4.5L15 15"
+                                                />
+                                            </svg>
+                                        </p>
+                                        <p class="text-sm text-gray-600">
+                                            {{ hotel.area }}m² ·
+                                            {{ SET_TEXT_DIRECTION_ROOM(1) }}
+                                        </p>
+                                    </div>
+
+                                    <div class="mb-1 flex flex-wrap">
+                                        <span
+                                            v-for="(
+                                                label, index
+                                            ) in facilityTexts(
+                                                hotel.facilities
+                                            )"
+                                            :key="index"
+                                            class="bg-blue-100 text-indigo-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded-sm mb-1"
+                                            >{{ label }}</span
+                                        >
+                                    </div>
+
+                                    <div class="mt-4">
+                                        <div class="flex items-center">
+                                            <svg
+                                                class="w-4 h-4 text-yellow-300 me-1"
+                                                aria-hidden="true"
+                                                xmlns="http://www.w3.org/2000/svg"
+                                                fill="currentColor"
+                                                viewBox="0 0 22 20"
+                                            >
+                                                <path
+                                                    d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"
+                                                />
+                                            </svg>
+                                            <p
+                                                class="ms-2 text-sm font-bold text-gray-900"
+                                            >
+                                                4.95
+                                            </p>
+                                            <span
+                                                class="w-1 h-1 mx-1.5 bg-gray-500 rounded-full"
+                                            ></span>
+                                            <a
+                                                href="#"
+                                                class="text-sm font-medium text-gray-900 underline hover:no-underline"
+                                                >73 reviews</a
+                                            >
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="text-right">
-                                    <p
-                                        class="line-through text-gray-400 text-sm"
-                                    >
-                                        {{ hotel.oldPrice }}
-                                    </p>
+                                <div>
                                     <p
                                         class="text-lg font-semibold text-orange-600"
                                     >
-                                        {{ hotel.price }}
+                                        {{ formatPriceVND(hotel.price) }} /tháng
                                     </p>
-                                    <p class="text-xs text-gray-500">
-                                        Chỉ còn {{ hotel.rooms }} phòng
-                                    </p>
+                                    <div
+                                        class="mt-1 px-2 py-1 bg-green-100 text-green-800 text-xs font-semibold rounded"
+                                    >
+                                        <p
+                                            class="text-center text-xs text-gray-500"
+                                        >
+                                            Chỉ còn 5 phòng
+                                        </p>
+                                    </div>
                                 </div>
                             </div>
                         </template>
@@ -201,13 +291,6 @@
                                     type="checkbox"
                                     class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded-sm"
                                 />
-                                Ghế tình yêu
-                            </label>
-                            <label class="flex items-center gap-2">
-                                <input
-                                    type="checkbox"
-                                    class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded-sm"
-                                />
                                 Lễ tân 24/24
                             </label>
                             <label class="flex items-center gap-2">
@@ -226,9 +309,11 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, onBeforeUnmount } from "vue";
+import { ref, onMounted, onBeforeUnmount, computed } from "vue";
 import Skeleton from "@/components/skeleton/PostSkeleton.vue";
 import FilterSidebar from "~/components/posts/FilterSidebar.vue"; // đường dẫn đúng tới file
+import { getPostList } from "~/apis/posts";
+import { SET_TEXT_FACILITY_ROOM } from "~/utils/const";
 
 const showFilter = ref(false);
 
@@ -249,63 +334,75 @@ const handleResize = () => {
 
 // Mock data
 const loading = ref(true);
-const mockHotels = ref([
-    {
-        id: 1,
-        name: "Nhà trọ Hoa Hồng",
-        rating: 4.6,
-        reviews: 120,
-        distance: "Cách trung tâm 1km",
-        oldPrice: "3.000.000đ",
-        price: "2.500.000đ",
-        rooms: 2,
-        image: "https://res.cloudinary.com/ds8q7doz2/image/upload/v1755679804/nen-o-tro-hay-chung-cu_1_dumw8m.png",
-    },
-    {
-        id: 2,
-        name: "Phòng trọ Moonlight",
-        rating: 4.3,
-        reviews: 85,
-        distance: "Cách trung tâm 2km",
-        oldPrice: "2.800.000đ",
-        price: "2.200.000đ",
-        rooms: 3,
-        image: "https://res.cloudinary.com/ds8q7doz2/image/upload/v1755679804/nen-o-tro-hay-chung-cu_1_dumw8m.png",
-    },
-    {
-        id: 3,
-        name: "Bình Hưng Hotel 3",
-        rating: 4.3,
-        reviews: 85,
-        distance: "Cách trung tâm 2km",
-        oldPrice: "2.800.000đ",
-        price: "2.200.000đ",
-        rooms: 3,
-        image: "https://res.cloudinary.com/ds8q7doz2/image/upload/v1755679804/nen-o-tro-hay-chung-cu_1_dumw8m.png",
-    },
-    {
-        id: 4,
-        name: "Bình Hưng Hotel 4",
-        rating: 4.3,
-        reviews: 85,
-        distance: "Cách trung tâm 2km",
-        oldPrice: "2.800.000đ",
-        price: "2.200.000đ",
-        rooms: 3,
-        image: "https://res.cloudinary.com/ds8q7doz2/image/upload/v1755679804/nen-o-tro-hay-chung-cu_1_dumw8m.png",
-    },
-]);
+// const mockHotels = ref([
+//     {
+//         id: 1,
+//         name: "Nhà trọ Hoa Hồng",
+//         rating: 4.6,
+//         reviews: 120,
+//         distance: "Cách trung tâm 1km",
+//         oldPrice: "3.000.000đ",
+//         price: "2.500.000đ",
+//         rooms: 2,
+//         image: "https://res.cloudinary.com/ds8q7doz2/image/upload/v1755679804/nen-o-tro-hay-chung-cu_1_dumw8m.png",
+//     },
+//     {
+//         id: 2,
+//         name: "Phòng trọ Moonlight",
+//         rating: 4.3,
+//         reviews: 85,
+//         distance: "Cách trung tâm 2km",
+//         oldPrice: "2.800.000đ",
+//         price: "2.200.000đ",
+//         rooms: 3,
+//         image: "https://res.cloudinary.com/ds8q7doz2/image/upload/v1755679804/nen-o-tro-hay-chung-cu_1_dumw8m.png",
+//     },
+//     {
+//         id: 3,
+//         name: "Bình Hưng Hotel 3",
+//         rating: 4.3,
+//         reviews: 85,
+//         distance: "Cách trung tâm 2km",
+//         oldPrice: "2.800.000đ",
+//         price: "2.200.000đ",
+//         rooms: 3,
+//         image: "https://res.cloudinary.com/ds8q7doz2/image/upload/v1755679804/nen-o-tro-hay-chung-cu_1_dumw8m.png",
+//     },
+//     {
+//         id: 4,
+//         name: "Bình Hưng Hotel 4",
+//         rating: 4.3,
+//         reviews: 85,
+//         distance: "Cách trung tâm 2km",
+//         oldPrice: "2.800.000đ",
+//         price: "2.200.000đ",
+//         rooms: 3,
+//         image: "https://res.cloudinary.com/ds8q7doz2/image/upload/v1755679804/nen-o-tro-hay-chung-cu_1_dumw8m.png",
+//     },
+// ]);
 
-onMounted(() => {
+onMounted(async () => {
     window.addEventListener("resize", handleResize);
 
+    // // giả lập gọi API sau 3s
+    // setTimeout(() => {
+    //     hotels.value = mockHotels.value;
+    //     loading.value = false;
+    // }, 3000);
+
     // giả lập gọi API sau 3s
-    setTimeout(() => {
-        hotels.value = mockHotels.value;
-        loading.value = false;
-    }, 3000);
+    hotels.value = await getPostList();
+    loading.value = false;
 });
 onBeforeUnmount(() => {
     window.removeEventListener("resize", handleResize);
 });
+
+const facilityTexts = (facilities: any) => {
+    return SET_TEXT_FACILITY_ROOM.filter((item) =>
+        facilities.includes(item.value)
+    )
+        .map((item) => item.label)
+        .slice(0, 3); // chỉ lấy tối đa 3;
+};
 </script>
