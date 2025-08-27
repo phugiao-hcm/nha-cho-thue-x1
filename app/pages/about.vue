@@ -35,7 +35,7 @@
                 </div>
                 <div>
                     <img
-                        src="/images/4.png"
+                        src="https://placehold.co/600x401"
                         alt="Team"
                         class="rounded-xl shadow-lg"
                     />

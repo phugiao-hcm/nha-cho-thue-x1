@@ -257,21 +257,21 @@
                         <div class="space-y-2">
                             <label class="flex items-center gap-2">
                                 <input
-                                    type="checkbox"
+                                    type="radio"
                                     class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded-sm"
                                 />
                                 ≥ 4.5 ⭐
                             </label>
                             <label class="flex items-center gap-2">
                                 <input
-                                    type="checkbox"
+                                    type="radio"
                                     class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded-sm"
                                 />
                                 ≥ 4.0 ⭐
                             </label>
                             <label class="flex items-center gap-2">
                                 <input
-                                    type="checkbox"
+                                    type="radio"
                                     class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded-sm"
                                 />
                                 ≥ 3.5 ⭐
@@ -280,7 +280,7 @@
                     </section>
 
                     <!-- Tiện ích -->
-                    <section>
+                    <section class="mb-6">
                         <h3 class="font-semibold mb-2">Tiện ích</h3>
                         <div class="space-y-2 text-sm">
                             <label class="flex items-center gap-2">
@@ -295,7 +295,14 @@
                                     type="checkbox"
                                     class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded-sm"
                                 />
-                                Lễ tân 24/24
+                                Quản lý 24/24
+                            </label>
+                            <label class="flex items-center gap-2">
+                                <input
+                                    type="checkbox"
+                                    class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded-sm"
+                                />
+                                Bãi giữ xe
                             </label>
                             <label class="flex items-center gap-2">
                                 <input
@@ -303,6 +310,41 @@
                                     class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded-sm"
                                 />
                                 Thang máy
+                            </label>
+                        </div>
+                    </section>
+
+                    <!-- Gần khu vực -->
+                    <section>
+                        <h3 class="font-semibold mb-2">Gần Khu vực</h3>
+                        <div class="space-y-2 text-sm">
+                            <label class="flex items-center gap-2">
+                                <input
+                                    type="checkbox"
+                                    class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded-sm"
+                                />
+                                Chợ
+                            </label>
+                            <label class="flex items-center gap-2">
+                                <input
+                                    type="checkbox"
+                                    class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded-sm"
+                                />
+                                Trường học
+                            </label>
+                            <label class="flex items-center gap-2">
+                                <input
+                                    type="checkbox"
+                                    class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded-sm"
+                                />
+                                Cửa hàng tiện lợi
+                            </label>
+                            <label class="flex items-center gap-2">
+                                <input
+                                    type="checkbox"
+                                    class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded-sm"
+                                />
+                                Khu công nghiệp
                             </label>
                         </div>
                     </section>

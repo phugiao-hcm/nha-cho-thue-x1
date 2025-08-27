@@ -4,13 +4,14 @@
             <h2
                 class="text-4xl font-extrabold text-orange-500 mb-3 relative inline-block"
             >
-                Phòng Trọ tiềm năng
+                Phòng tiềm năng
                 <span
                     class="absolute left-0 -bottom-2 w-30 h-1 bg-orange-500 rounded-full"
                 ></span>
             </h2>
             <p class="text-gray-600 mb-8 max-w-xl">
-                Tìm kiếm các chỗ ở đẹp và phù hợp nhất với bạn tại Phú Giáo
+                Hợp tác với các Khách hàng giới thiệu chỗ ở đẹp và vị trí phù
+                hợp nhất với bạn
             </p>
             <template v-if="loading">
                 <div class="flex gap-4 overflow-hidden">
@@ -87,31 +88,31 @@ const mockHotels = [
         slug: "nha-mat-pho-quan-1",
         title: "Nhà phố Phú Giáo 120m²",
         price: 3.2,
-        image: "images/1.png",
+        image: "https://placehold.co/600x401",
     },
     {
         slug: "nha-mat-pho-quan-2",
         title: "Biệt thự sân vườn đẹp",
         price: 5.8,
-        image: "images/2.png",
+        image: "https://placehold.co/600x401",
     },
     {
         slug: "nha-mat-pho-quan-3",
         title: "Chung cư cao cấp TP.Thủ Dầu Một",
         price: 2.7,
-        image: "images/3.png",
+        image: "https://placehold.co/600x401",
     },
     {
         slug: "nha-mat-pho-quan-4",
         title: "Đất nền Phú Giáo vị trí đẹp",
         price: 1.9,
-        image: "images/4.png",
+        image: "https://placehold.co/600x401",
     },
     {
         slug: "nha-mat-pho-quan-5",
         title: "Căn hộ tiện nghi hiện đại",
         price: 3.5,
-        image: "images/5.png",
+        image: "https://placehold.co/600x401",
     },
 ];
 

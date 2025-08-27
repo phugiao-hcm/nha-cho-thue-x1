@@ -196,7 +196,7 @@
                 <button
                     class="w-full border border-orange-500 text-orange-500 py-2 rounded-lg hover:bg-orange-50 text-sm sm:text-xs md:text-sm"
                 >
-                    Gọi: 092962xxxx
+                    Gọi: 093770xxxx
                 </button>
             </div>
         </div>
@@ -249,7 +249,7 @@ const property = ref(null);
 // ẩn hiện số điện thoại
 const showPhone = ref(false);
 const maskedPhone = computed(() =>
-    showPhone.value ? "0929621234" : "092962 ***"
+    showPhone.value ? "093770459" : "093770 ***"
 );
 
 onMounted(() => {
