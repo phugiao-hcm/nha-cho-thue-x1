@@ -85,9 +85,13 @@
                                     class="w-full md:w-[200px] h-[150px] object-cover rounded-xl"
                                 />
                                 <div class="flex-1">
-                                    <h3 class="font-semibold mb-2">
-                                        {{ hotel.nameAccommodation }}
-                                    </h3>
+                                    <NuxtLink :to="`/properties/${hotel.id}`">
+                                        <h3
+                                            class="font-semibold mb-2 text-blue-600 dark:text-blue-500"
+                                        >
+                                            {{ hotel.nameAccommodation }}
+                                        </h3>
+                                    </NuxtLink>
 
                                     <div class="flex mb-2 gap-1 items-center">
                                         <P>
@@ -334,63 +338,10 @@ const handleResize = () => {
 
 // Mock data
 const loading = ref(true);
-// const mockHotels = ref([
-//     {
-//         id: 1,
-//         name: "Nhà trọ Hoa Hồng",
-//         rating: 4.6,
-//         reviews: 120,
-//         distance: "Cách trung tâm 1km",
-//         oldPrice: "3.000.000đ",
-//         price: "2.500.000đ",
-//         rooms: 2,
-//         image: "https://res.cloudinary.com/ds8q7doz2/image/upload/v1755679804/nen-o-tro-hay-chung-cu_1_dumw8m.png",
-//     },
-//     {
-//         id: 2,
-//         name: "Phòng trọ Moonlight",
-//         rating: 4.3,
-//         reviews: 85,
-//         distance: "Cách trung tâm 2km",
-//         oldPrice: "2.800.000đ",
-//         price: "2.200.000đ",
-//         rooms: 3,
-//         image: "https://res.cloudinary.com/ds8q7doz2/image/upload/v1755679804/nen-o-tro-hay-chung-cu_1_dumw8m.png",
-//     },
-//     {
-//         id: 3,
-//         name: "Bình Hưng Hotel 3",
-//         rating: 4.3,
-//         reviews: 85,
-//         distance: "Cách trung tâm 2km",
-//         oldPrice: "2.800.000đ",
-//         price: "2.200.000đ",
-//         rooms: 3,
-//         image: "https://res.cloudinary.com/ds8q7doz2/image/upload/v1755679804/nen-o-tro-hay-chung-cu_1_dumw8m.png",
-//     },
-//     {
-//         id: 4,
-//         name: "Bình Hưng Hotel 4",
-//         rating: 4.3,
-//         reviews: 85,
-//         distance: "Cách trung tâm 2km",
-//         oldPrice: "2.800.000đ",
-//         price: "2.200.000đ",
-//         rooms: 3,
-//         image: "https://res.cloudinary.com/ds8q7doz2/image/upload/v1755679804/nen-o-tro-hay-chung-cu_1_dumw8m.png",
-//     },
-// ]);
 
 onMounted(async () => {
     window.addEventListener("resize", handleResize);
 
-    // // giả lập gọi API sau 3s
-    // setTimeout(() => {
-    //     hotels.value = mockHotels.value;
-    //     loading.value = false;
-    // }, 3000);
-
-    // giả lập gọi API sau 3s
     hotels.value = await getPostList();
     loading.value = false;
 });

@@ -1,5 +1,6 @@
 <template>
     <div
+        v-if="!ui.isLoading && property"
         class="max-w-6xl mx-auto mt-6 px-4 md:px-0 grid gap-4 sm:grid-cols-1 md:grid-cols-3"
     >
         <!-- Bên trái: Hình ảnh và thông tin -->
@@ -22,12 +23,12 @@
                     }"
                 >
                     <swiper-slide
-                        v-for="(img, i) in property.images"
+                        v-for="(img, i) in property.imageList"
                         :key="i"
                         class="box-border"
                     >
                         <img
-                            :src="img"
+                            :src="img.imagePath"
                             class="w-full h-48 sm:h-56 md:h-64 lg:h-80 object-scale-down"
                         />
                     </swiper-slide>
@@ -45,11 +46,11 @@
                     class="w-full"
                 >
                     <swiper-slide
-                        v-for="(img, i) in property.images"
+                        v-for="(img, i) in property.imageList"
                         :key="'thumb-' + i"
                     >
                         <img
-                            :src="img"
+                            :src="img.imagePath"
                             class="w-full h-16 sm:h-20 object-cover rounded cursor-pointer"
                         />
                     </swiper-slide>
@@ -66,17 +67,60 @@
             <!-- Giá + diện tích -->
             <div class="flex flex-wrap items-center gap-3 mt-2">
                 <p class="text-red-600 text-2xl sm:text-xl font-semibold">
-                    {{ property.price }} triệu/tháng
+                    {{ formatPriceVND(property.price) }} /tháng
                 </p>
-                <span class="text-gray-600">{{ property.area }} m²</span>
+
+                <div class="flex items-center gap-1">
+                    <p>
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke-width="1.5"
+                            stroke="currentColor"
+                            class="size-4 w-4 h-4 text-gray-500 mr-1"
+                        >
+                            <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                d="M3.75 3.75v4.5m0-4.5h4.5m-4.5 0L9 9M3.75 20.25v-4.5m0 4.5h4.5m-4.5 0L9 15M20.25 3.75h-4.5m4.5 0v4.5m0-4.5L15 9m5.25 11.25h-4.5m4.5 0v-4.5m0 4.5L15 15"
+                            />
+                        </svg>
+                    </p>
+                    <p class="text-sm text-gray-600">
+                        {{ property.area }}m² · {{ SET_TEXT_DIRECTION_ROOM(1) }}
+                    </p>
+                </div>
             </div>
 
             <!-- Địa chỉ -->
             <div
                 class="flex items-center text-gray-600 mt-2 text-sm sm:text-xs md:text-sm"
             >
-                <Icon name="mdi:map-marker" class="w-5 h-5 mr-1 text-red-500" />
-                {{ property.address }}
+                <P>
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke-width="1.5"
+                        stroke="currentColor"
+                        class="size-4 w-4 h-4 text-gray-500 mr-1"
+                    >
+                        <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"
+                        />
+                        <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z"
+                        />
+                    </svg>
+                </P>
+                <p class="text-sm text-gray-800">
+                    {{ property.address }}
+                </p>
             </div>
 
             <!-- MÔ TẢ CHI TIẾT -->
@@ -112,16 +156,6 @@
                     allowfullscreen=""
                     loading="lazy"
                 ></iframe>
-
-                <!-- <iframe
-                    :src="mapUrl"
-                    width="100%"
-                    height="100%"
-                    class="border-0"
-                    allowfullscreen=""
-                    loading="lazy"
-                    referrerpolicy="no-referrer-when-downgrade"
-                ></iframe> -->
             </div>
         </div>
 
@@ -163,21 +197,26 @@
 </template>
 
 <script setup>
-import { ref, computed } from "vue";
+import { ref, computed, onMounted, reactive } from "vue";
 import { Swiper, SwiperSlide } from "swiper/vue";
 import "swiper/css";
 import "swiper/css/free-mode";
 import "swiper/css/navigation";
 import "swiper/css/thumbs";
 import News from "@/components/posts/News.vue";
+import { getPostDetail } from "~/apis/posts";
+
+import { useRoute } from "vue-router";
+const route = useRoute();
+
+const ui = reactive({
+    isLoading: false,
+});
 
 // modules Swiper
 import { FreeMode, Navigation, Thumbs } from "swiper/modules";
 // Swiper thumbs sync
 const thumbsSwiper = ref(null);
-const thumbsSwiperReady = ref(false);
-const mainSwiper = ref(null);
-const activeIndex = ref(0);
 
 const setThumbsSwiper = (swiper) => {
     thumbsSwiper.value = swiper;
@@ -185,42 +224,29 @@ const setThumbsSwiper = (swiper) => {
 
 const modules = [FreeMode, Navigation, Thumbs];
 // dữ liệu mẫu
-const property = {
-    id: "1",
-    title: "Phòng mới 2 cửa lớn đón gió mát mẻ rộng rãi. FULL nội thất",
-    images: [
-        "https://res.cloudinary.com/ds8q7doz2/image/upload/v1755679804/nen-o-tro-hay-chung-cu_1_dumw8m.png",
-        "https://res.cloudinary.com/ds8q7doz2/image/upload/v1755679804/nen-o-tro-hay-chung-cu_1_dumw8m.png",
-        "https://res.cloudinary.com/ds8q7doz2/image/upload/v1755679804/nen-o-tro-hay-chung-cu_1_dumw8m.png",
-        "https://res.cloudinary.com/ds8q7doz2/image/upload/v1755679804/nen-o-tro-hay-chung-cu_1_dumw8m.png",
-        "https://res.cloudinary.com/ds8q7doz2/image/upload/v1755679804/nen-o-tro-hay-chung-cu_1_dumw8m.png",
-        "https://res.cloudinary.com/ds8q7doz2/image/upload/v1755679804/nen-o-tro-hay-chung-cu_1_dumw8m.png",
-        "https://res.cloudinary.com/ds8q7doz2/image/upload/v1755679804/nen-o-tro-hay-chung-cu_1_dumw8m.png",
-    ],
-    price: 5.5,
-    area: 35,
-    address: "Đường Nguyễn Kiệm, Phường 9, Quận Phú Nhuận, TP HCM",
-    interior: "Nội thất cao cấp",
-    deposit: "5.500.000",
-    description: `
-1. Cam kết.
-- Hợp đồng thuê & cọc rõ ràng.
-- Hình ảnh thật 100%.
-- Không phát sinh chi phí ẩn.
-
-2. Tiện ích.
-- 2 Cửa lớn đón gió CỰC MÁT
-- Thang máy tận cửa
-- Ra vào vân tay
-- An ninh tuyệt đối.
-  `,
-};
+const property = ref(null);
 
 // ẩn hiện số điện thoại
 const showPhone = ref(false);
 const maskedPhone = computed(() =>
     showPhone.value ? "0929621234" : "092962 ***"
 );
+
+onMounted(() => {
+    fetchProjects();
+});
+
+const fetchProjects = async () => {
+    try {
+        ui.isLoading = true;
+        property.value = await getPostDetail(route.params.id);
+        console.log("property.value :", property.value);
+    } catch (e) {
+        console.error(e);
+    } finally {
+        ui.isLoading = false;
+    }
+};
 
 // const mapUrl = `https://www.google.com/maps/embed/v1/place?key=YOUR_GOOGLE_MAPS_API_KEY&q=${property.latitude},${property.longitude}`;
 </script>

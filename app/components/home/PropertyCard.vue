@@ -1,5 +1,5 @@
 <template>
-    <NuxtLink :to="`/properties/${property.nameAccommodation}`">
+    <NuxtLink :to="`/properties/${property.id}`">
         <div
             class="rounded shadow hover:shadow-lg transition cursor-pointer bg-white"
         >
