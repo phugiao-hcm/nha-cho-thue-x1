@@ -6,14 +6,15 @@ export default defineNuxtConfig({
     ssr: false, // vì GitHub Pages chỉ hỗ trợ static
     target: "static", // không bắt buộc nhưng rõ ràng
     ogImage: {
-        enabled: false // ⚠️ tắt vì cần SSR, , Google bot sẽ không đọc được client-side
+        enabled: false, // ⚠️ tắt vì cần SSR, , Google bot sẽ không đọc được client-side
     },
     schemaOrg: {
-        disabled: true // ⚠️ tắt luôn, Google bot sẽ không đọc được client-side
+        disabled: true, // ⚠️ tắt luôn, Google bot sẽ không đọc được client-side
     },
     app: {
         baseURL: "/nha-cho-thue-x1/", // ⚠️ thay <REPO_NAME> bằng tên repo của bạn
-          head: {
+        buildAssetsDir: "_nuxt/", // default, giữ nguyên
+        head: {
             title: "Cho thuê phòng trọ Huyện Phú Giáo - Tìm nhà trọ giá rẻ, uy tín",
             meta: [
                 {
@@ -24,12 +25,12 @@ export default defineNuxtConfig({
                 {
                     name: "description",
                     content:
-                    "Website đăng tin cho thuê phòng trọ, nhà trọ, căn hộ tại Huyện Phú Giáo. Dễ dàng tìm kiếm trọ giá rẻ, gần trường học, khu công nghiệp, phù hợp sinh viên và người lao động.",
+                        "Website đăng tin cho thuê phòng trọ, nhà trọ, căn hộ tại Huyện Phú Giáo. Dễ dàng tìm kiếm trọ giá rẻ, gần trường học, khu công nghiệp, phù hợp sinh viên và người lao động.",
                 },
                 {
                     name: "keywords",
                     content:
-                    "cho thuê phòng trọ Phú Giáo, nhà trọ Phú Giáo, thuê trọ giá rẻ Phú Giáo, tìm trọ Phú Giáo, phòng trọ sinh viên Phú Giáo, nhà trọ công nhân Phú Giáo",
+                        "cho thuê phòng trọ Phú Giáo, nhà trọ Phú Giáo, thuê trọ giá rẻ Phú Giáo, tìm trọ Phú Giáo, phòng trọ sinh viên Phú Giáo, nhà trọ công nhân Phú Giáo",
                 },
 
                 // Open Graph (Facebook, Zalo)
@@ -39,17 +40,18 @@ export default defineNuxtConfig({
                 },
                 {
                     property: "og:title",
-                    content: "Cho thuê phòng trọ Huyện Phú Giáo - Nhà trọ giá rẻ",
+                    content:
+                        "Cho thuê phòng trọ Huyện Phú Giáo - Nhà trọ giá rẻ",
                 },
                 {
                     property: "og:description",
                     content:
-                    "Đăng tin cho thuê và tìm kiếm phòng trọ, nhà trọ, căn hộ tại Huyện Phú Giáo. Nhanh chóng, miễn phí, dễ sử dụng.",
+                        "Đăng tin cho thuê và tìm kiếm phòng trọ, nhà trọ, căn hộ tại Huyện Phú Giáo. Nhanh chóng, miễn phí, dễ sử dụng.",
                 },
                 {
                     property: "og:image",
                     content:
-                    "https://trodayroi.vn/nha-cho-thue-x1/images/og-image.png",
+                        "https://trodayroi.vn/nha-cho-thue-x1/images/og-image.png",
                 },
                 {
                     property: "og:url",
@@ -63,12 +65,13 @@ export default defineNuxtConfig({
                 },
                 {
                     name: "twitter:title",
-                    content: "Cho thuê phòng trọ Huyện Phú Giáo - Nhà trọ giá rẻ",
+                    content:
+                        "Cho thuê phòng trọ Huyện Phú Giáo - Nhà trọ giá rẻ",
                 },
                 {
                     name: "twitter:description",
                     content:
-                    "Website đăng tin cho thuê, tìm kiếm phòng trọ, nhà trọ giá rẻ tại Huyện Phú Giáo.",
+                        "Website đăng tin cho thuê, tìm kiếm phòng trọ, nhà trọ giá rẻ tại Huyện Phú Giáo.",
                 },
                 {
                     name: "twitter:image",
@@ -87,11 +90,7 @@ export default defineNuxtConfig({
             ],
         },
     },
-    modules: [
-        '@nuxtjs/robots',
-        '@nuxtjs/seo',
-        '@nuxtjs/sitemap',
-    ],
+    modules: ["@nuxtjs/robots", "@nuxtjs/seo", "@nuxtjs/sitemap"],
     site: {
         url: "https://trodayroi.vn", // 🔁 sửa đúng URL GitHub Pages của bạn
     },
