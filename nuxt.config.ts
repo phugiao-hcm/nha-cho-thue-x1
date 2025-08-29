@@ -12,7 +12,7 @@ export default defineNuxtConfig({
         disabled: true, // ⚠️ tắt luôn, Google bot sẽ không đọc được client-side
     },
     app: {
-        baseURL: "/nha-cho-thue-x1/", // ⚠️ thay <REPO_NAME> bằng tên repo của bạn
+        baseURL: "/", // ⚠️ thay <REPO_NAME> bằng tên repo của bạn
         buildAssetsDir: "_nuxt/", // default, giữ nguyên
         head: {
             title: "Cho thuê phòng trọ Huyện Phú Giáo - Tìm nhà trọ giá rẻ, uy tín",
@@ -50,12 +50,11 @@ export default defineNuxtConfig({
                 },
                 {
                     property: "og:image",
-                    content:
-                        "https://trodayroi.vn/nha-cho-thue-x1/images/og-image.png",
+                    content: "https://trodayroi.vn/images/og-image.png",
                 },
                 {
                     property: "og:url",
-                    content: "https://trodayroi.vn/nha-cho-thue-x1/",
+                    content: "https://trodayroi.vn/",
                 },
 
                 // Twitter Card
@@ -75,8 +74,7 @@ export default defineNuxtConfig({
                 },
                 {
                     name: "twitter:image",
-                    content:
-                        "https://trodayroi.vn/nha-cho-thue-x1/images/og-image.png",
+                    content: "https://trodayroi.vn/images/og-image.png",
                 },
 
                 // Viewport + Charset
