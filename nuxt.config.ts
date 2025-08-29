@@ -12,7 +12,7 @@ export default defineNuxtConfig({
         disabled: true, // ⚠️ tắt luôn, Google bot sẽ không đọc được client-side
     },
     app: {
-        baseURL: "/", // ⚠️ thay <REPO_NAME> bằng tên repo của bạn
+        baseURL: "/nha-cho-thue-x1/", // ⚠️ thay <REPO_NAME> bằng tên repo của bạn
         buildAssetsDir: "_nuxt/", // default, giữ nguyên
         head: {
             title: "Cho thuê phòng trọ Huyện Phú Giáo - Tìm nhà trọ giá rẻ, uy tín",
@@ -90,7 +90,7 @@ export default defineNuxtConfig({
     },
     modules: ["@nuxtjs/robots", "@nuxtjs/seo", "@nuxtjs/sitemap"],
     site: {
-        url: "https://trodayroi.vn", // 🔁 sửa đúng URL GitHub Pages của bạn
+        url: "https://trodayroi.vn/", // 🔁 sửa đúng URL GitHub Pages của bạn
     },
     sitemap: {
         sitemapName: "sitemap.xml",
