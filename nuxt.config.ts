@@ -49,11 +49,11 @@ export default defineNuxtConfig({
                 {
                     property: "og:image",
                     content:
-                    "https://phugiao-hcm.github.io/nha-cho-thue-x1/images/og-image.png",
+                    "https://trodayroi.vn/nha-cho-thue-x1/images/og-image.png",
                 },
                 {
                     property: "og:url",
-                    content: "https://phugiao-hcm.github.io/nha-cho-thue-x1/",
+                    content: "https://trodayroi.vn/nha-cho-thue-x1/",
                 },
 
                 // Twitter Card
@@ -73,7 +73,7 @@ export default defineNuxtConfig({
                 {
                     name: "twitter:image",
                     content:
-                        "https://phugiao-hcm.github.io/nha-cho-thue-x1/images/og-image.png",
+                        "https://trodayroi.vn/nha-cho-thue-x1/images/og-image.png",
                 },
 
                 // Viewport + Charset
@@ -93,7 +93,7 @@ export default defineNuxtConfig({
         '@nuxtjs/sitemap',
     ],
     site: {
-        url: "https://phugiao-hcm.github.io", // 🔁 sửa đúng URL GitHub Pages của bạn
+        url: "https://trodayroi.vn", // 🔁 sửa đúng URL GitHub Pages của bạn
     },
     sitemap: {
         sitemapName: "sitemap.xml",
