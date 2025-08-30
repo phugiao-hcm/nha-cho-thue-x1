@@ -232,6 +232,7 @@ import "swiper/css/thumbs";
 import News from "@/components/posts/News.vue";
 import { getPostDetail } from "~/apis/posts";
 import VueEasyLightbox from "vue-easy-lightbox";
+const { $amplitude } = useNuxtApp();
 
 import { useRoute } from "vue-router";
 const route = useRoute();
@@ -270,6 +271,10 @@ const maskedPhone = computed(() =>
 );
 
 onMounted(() => {
+    $amplitude.track("view_room_detail", {
+        label: "Xem chi tiết phòng",
+    });
+
     fetchProjects();
 });
 
@@ -277,7 +282,6 @@ const fetchProjects = async () => {
     try {
         ui.isLoading = true;
         property.value = await getPostDetail(route.params.id);
-        console.log("property.value :", property.value);
     } catch (e) {
         console.error(e);
     } finally {

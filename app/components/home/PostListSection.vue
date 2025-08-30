@@ -42,6 +42,5 @@ const loading = ref(true); // trạng thái loading
 onMounted(async () => {
     projects.value = await getPostList();
     loading.value = false;
-    console.log("projects loaded:", projects.value);
 });
 </script>

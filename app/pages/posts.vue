@@ -91,7 +91,10 @@
                                     class="w-full md:w-[200px] h-[150px] object-cover rounded-xl"
                                 />
                                 <div class="flex-1">
-                                    <NuxtLink :to="`/properties/${hotel.id}`">
+                                    <NuxtLink
+                                        :to="`/properties/${hotel.id}`"
+                                        @click="onClickViewRoomDetail"
+                                    >
                                         <h3
                                             class="font-semibold mb-2 text-blue-600 dark:text-blue-500"
                                         >
@@ -385,6 +388,7 @@ import Skeleton from "@/components/skeleton/PostSkeleton.vue";
 import FilterSidebar from "~/components/posts/FilterSidebar.vue"; // đường dẫn đúng tới file
 import { getPostList } from "~/apis/posts";
 import { SET_TEXT_FACILITY_ROOM } from "~/utils/const";
+const { $amplitude } = useNuxtApp();
 
 const showFilter = ref(false);
 
@@ -422,5 +426,11 @@ const facilityTexts = (facilities: any) => {
     )
         .map((item) => item.label)
         .slice(0, 3); // chỉ lấy tối đa 3;
+};
+
+const onClickViewRoomDetail = () => {
+    $amplitude.track("button_clicked_view_room_detail", {
+        label: "(Posts) - Chọn Xem chi tiết phòng",
+    });
 };
 </script>

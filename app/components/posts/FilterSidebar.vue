@@ -101,7 +101,6 @@ const resetFilters = () => {
 };
 
 const applyFilters = () => {
-    console.log("Filters:", filters);
     toggleFilter();
 };
 </script>

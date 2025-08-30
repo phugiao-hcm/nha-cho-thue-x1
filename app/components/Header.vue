@@ -4,7 +4,11 @@
             class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center"
         >
             <!-- Logo -->
-            <NuxtLink to="/" class="text-2xl font-extrabold text-orange-600">
+            <NuxtLink
+                to="/"
+                @click="onClickHomeLogo"
+                class="text-2xl font-extrabold text-orange-600"
+            >
                 <img
                     src="/images/og-image.png"
                     alt="Logo"
@@ -18,16 +22,19 @@
                 <nav class="flex space-x-6 font-medium text-gray-700">
                     <NuxtLink
                         to="/"
+                        @click="onClickHome"
                         class="hover:text-orange-600 transition-colors"
                         >Trang chủ</NuxtLink
                     >
                     <NuxtLink
                         to="/posts"
+                        @click="onClickPosts"
                         class="hover:text-orange-600 transition-colors"
                         >Phòng trọ</NuxtLink
                     >
                     <NuxtLink
                         to="/about"
+                        @click="onClickAboutUs"
                         class="hover:text-orange-600 transition-colors"
                         >Về chúng tôi</NuxtLink
                     >
@@ -36,6 +43,7 @@
                 <!-- Đăng tin miễn phí button -->
                 <NuxtLink
                     to="/about"
+                    @click="onClickPostFree"
                     class="ml-4 bg-white hover:bg-orange-100 border text-orange-600 font-semibold py-2 px-4 rounded-lg transition-colors"
                 >
                     Liên hệ - Đăng tin miễn phí
@@ -85,19 +93,19 @@
         <div v-if="isOpen" class="md:hidden px-4 pb-4 space-y-2 text-gray-700">
             <NuxtLink
                 to="/"
-                @click="isOpen = false"
+                @click="onClickHome"
                 class="block hover:text-orange-600 transition-colors"
                 >Trang chủ</NuxtLink
             >
             <NuxtLink
                 to="/posts"
-                @click="isOpen = false"
+                @click="onClickPosts"
                 class="block hover:text-orange-600 transition-colors"
                 >Phòng trọ</NuxtLink
             >
             <NuxtLink
                 to="/about"
-                @click="isOpen = false"
+                @click="onClickAboutUs"
                 class="block hover:text-orange-600 transition-colors"
                 >Về chúng tôi</NuxtLink
             >
@@ -105,7 +113,7 @@
             <!-- Mobile Đăng tin miễn phí button -->
             <NuxtLink
                 to="/about"
-                @click="isOpen = false"
+                @click="onClickPostFree"
                 class="block mt-2 bg-white hover:bg-orange-100 border text-orange-600 font-semibold py-2 px-4 rounded-lg text-center transition-colors"
             >
                 Liên hệ - Đăng tin miễn phí
@@ -116,5 +124,41 @@
 
 <script setup>
 import { ref } from "vue";
+const { $amplitude } = useNuxtApp();
+
 const isOpen = ref(false);
+
+const onClickPostFree = () => {
+    isOpen.value = false;
+    $amplitude.track("button_header_clicked_post_free", {
+        label: "(Header) - Liên hệ - Đăng tin miễn phí",
+    });
+};
+
+const onClickAboutUs = () => {
+    isOpen.value = false;
+    $amplitude.track("button_header_clicked_about_us", {
+        label: "(Header) - Về chúng tôi",
+    });
+};
+const onClickPosts = () => {
+    isOpen.value = false;
+    $amplitude.track("button_header_clicked_post", {
+        label: "(Header) - Phòng trọ",
+    });
+};
+
+const onClickHome = () => {
+    isOpen.value = false;
+    $amplitude.track("button_header_clicked_home", {
+        label: "(Header) - Trang chủ",
+    });
+};
+
+const onClickHomeLogo = () => {
+    isOpen.value = false;
+    $amplitude.track("button_header_clicked_home_logo", {
+        label: "(Header) - Trang chủ (Logo)",
+    });
+};
 </script>

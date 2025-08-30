@@ -16,6 +16,7 @@
             </p>
             <NuxtLink
                 to="/posts"
+                @click="onClickViewRoom"
                 class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-lg transition"
             >
                 Xem Phòng
@@ -25,5 +26,12 @@
 </template>
 
 <script setup>
-// Không cần script nếu chỉ hiển thị
+const { $amplitude } = useNuxtApp();
+
+const onClickViewRoom = () => {
+    isOpen.value = false;
+    $amplitude.track("button_hero_section_clicked_view_room", {
+        label: "(HeroSection) - Xem phòng",
+    });
+};
 </script>
