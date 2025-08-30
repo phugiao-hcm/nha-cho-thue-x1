@@ -100,7 +100,7 @@
                     v-if="isAvailableRooms"
                     class="px-2 py-1 bg-green-100 text-green-800 text-xs font-semibold rounded"
                 >
-                    <p class="text-xs text-gray-500">Chỉ còn 3 phòng</p>
+                    <p class="text-xs text-gray-500">Chỉ còn 1 phòng</p>
                 </div>
             </div>
         </div>
