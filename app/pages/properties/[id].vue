@@ -63,6 +63,7 @@
                     :imgs="property.imageList.map((x) => x.imagePath)"
                     :index="currentIndex"
                     @hide="visible = false"
+                    :moveDisabled="true"
                 />
             </div>
 
@@ -97,9 +98,25 @@
                         </svg>
                     </p>
                     <p class="text-sm text-gray-600">
-                        {{ property.area }}m² · {{ SET_TEXT_DIRECTION_ROOM(1) }}
+                        {{ property.area }}m²
+                        <span v-if="property.viewRoom">
+                            ·
+                            {{ SET_TEXT_DIRECTION_ROOM(property.viewRoom) }}
+                        </span>
                     </p>
                 </div>
+            </div>
+
+            <div class="mb-1 flex flex-wrap">
+                <span class="text-sm text-gray-600 mr-2"
+                    >Tiện ích xung quanh:</span
+                >
+                <span
+                    v-for="(label, index) in facilityTexts(property.facilities)"
+                    :key="index"
+                    class="bg-blue-100 text-indigo-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded-sm mb-1"
+                    >{{ label }}</span
+                >
             </div>
 
             <!-- Địa chỉ -->
@@ -139,7 +156,7 @@
                     class="text-gray-700 whitespace-pre-line leading-relaxed"
                     v-html="property.description"
                 />
-                <div class="mt-4 flex flex-wrap items-center gap-2">
+                <!-- <div class="mt-4 flex flex-wrap items-center gap-2">
                     <span class="font-semibold">SĐT Liên hệ:</span>
                     <span
                         class="bg-gray-100 px-3 py-1 rounded-lg text-gray-700"
@@ -152,7 +169,7 @@
                     >
                         Hiện SĐT
                     </button>
-                </div>
+                </div> -->
             </div>
 
             <!-- Section Google Maps -->
@@ -171,7 +188,7 @@
         <!-- Bên phải: Liên hệ -->
         <div class="md:col-span-1">
             <div
-                class="bg-white rounded-lg shadow p-4 md:sticky md:top-20 space-y-3"
+                class="bg-white rounded-lg shadow p-4 md:sticky md:top-20 space-y-3 hidden"
             >
                 <!-- Liên hệ -->
                 <div class="flex items-center gap-3 mb-3">
@@ -182,7 +199,7 @@
                     />
                     <div>
                         <h3 class="font-semibold text-sm sm:text-xs md:text-sm">
-                            Căn hộ dịch vụ Cao Cấp
+                            Căn hộ dịch vụ Cao Cấp (Đang câp nhạt)
                         </h3>
                         <p class="text-sm text-gray-500">Môi giới</p>
                     </div>
@@ -202,7 +219,7 @@
         </div>
     </div>
 
-    <News />
+    <News class="hidden" />
 </template>
 
 <script setup>
@@ -266,6 +283,12 @@ const fetchProjects = async () => {
     } finally {
         ui.isLoading = false;
     }
+};
+
+const facilityTexts = (facilities) => {
+    return SET_TEXT_FACILITY_ROOM.filter((item) =>
+        facilities.includes(item.value)
+    ).map((item) => item.label);
 };
 
 // const mapUrl = `https://www.google.com/maps/embed/v1/place?key=YOUR_GOOGLE_MAPS_API_KEY&q=${property.latitude},${property.longitude}`;

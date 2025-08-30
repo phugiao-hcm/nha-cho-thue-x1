@@ -23,14 +23,29 @@
                         Sứ Mệnh Của Chúng Tôi
                     </h2>
                     <p class="text-gray-600 mb-4">
-                        Mang đến trải nghiệm mua sắm hoa quả trực tuyến tốt nhất
-                        cho người tiêu dùng Việt, với cam kết về chất lượng,
-                        nguồn gốc rõ ràng và dịch vụ hậu mãi tận tình.
+                        Mang đến trải nghiệm tìm kiếm và đăng tin cho thuê trọ
+                        tiện lợi, nhanh chóng và đáng tin cậy cho người dân Việt
+                        Nam, đặc biệt là sinh viên, công nhân và người lao động
+                        xa quê.
                     </p>
                     <ul class="list-disc list-inside text-gray-600 space-y-2">
-                        <li>Đặt khách hàng làm trung tâm</li>
+                        <li>Đặt người thuê và chủ trọ làm trung tâm</li>
+                        <li>
+                            Chúng tôi luôn ưu tiên trải nghiệm của cả người thuê
+                            lẫn người cho thuê, tạo môi trường kết nối minh bạch
+                            và thuận lợi.
+                        </li>
                         <li>Minh bạch và trung thực</li>
+                        <li>
+                            Thông tin rõ ràng, hình ảnh xác thực, giúp hạn chế
+                            rủi ro khi tìm và thuê trọ.
+                        </li>
                         <li>Không ngừng đổi mới</li>
+                        <li>
+                            Liên tục cải tiến công nghệ, bổ sung tính năng thông
+                            minh để việc tìm trọ trở nên dễ dàng, tiết kiệm thời
+                            gian và chi phí.
+                        </li>
                     </ul>
                 </div>
                 <div>

@@ -2,7 +2,7 @@
     <div>
         <HeroSection />
         <PostListSection />
-        <FeaturedSlider />
+        <FeaturedSlider class="hidden" />
     </div>
 </template>
 

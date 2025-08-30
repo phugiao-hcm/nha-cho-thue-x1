@@ -22,7 +22,13 @@
                 <!-- Main -->
                 <main class="flex-1 order-1 md:order-none">
                     <!-- Mobile Filter Button -->
-                    <div class="md:hidden flex justify-end mb-4">
+                    <!-- <div class="md:hidden flex justify-end mb-4">
+                        <FilterSidebar
+                            :show="showFilter"
+                            @close="closeFilter"
+                        />
+                    </div> -->
+                    <div class="flex justify-end mb-4 hidden">
                         <FilterSidebar
                             :show="showFilter"
                             @close="closeFilter"
@@ -31,7 +37,7 @@
 
                     <!-- Banner -->
                     <div
-                        class="bg-white p-4 rounded-2xl shadow mb-4 flex flex-col md:flex-row md:justify-between md:items-center gap-3"
+                        class="bg-white p-4 rounded-2xl shadow mb-4 flex flex-col md:flex-row md:justify-between md:items-center gap-3 hidden"
                     >
                         <div>
                             <h4 class="text-red-500 font-semibold">
@@ -50,9 +56,9 @@
 
                     <!-- Sort -->
                     <div
-                        class="flex flex-col md:flex-row justify-between md:items-center gap-3 mb-4"
+                        class="flex flex-col md:flex-row justify-between md:items-center gap-3 mb-4 hidden"
                     >
-                        <h2 class="font-semibold">Bộ sưu tập Góc Lãng Mạn</h2>
+                        <h2 class="font-semibold">Bộ sưu tập Góc Trọ</h2>
                         <select
                             class="border rounded-lg px-3 py-2 text-sm w-full md:w-auto"
                         >
@@ -139,7 +145,14 @@
                                         </p>
                                         <p class="text-sm text-gray-600">
                                             {{ hotel.area }}m² ·
-                                            {{ SET_TEXT_DIRECTION_ROOM(1) }}
+                                            <span v-if="hotel.viewRoom">
+                                                ·
+                                                {{
+                                                    SET_TEXT_DIRECTION_ROOM(
+                                                        hotel.viewRoom
+                                                    )
+                                                }}
+                                            </span>
                                         </p>
                                     </div>
 
@@ -156,7 +169,7 @@
                                         >
                                     </div>
 
-                                    <div class="mt-4">
+                                    <div class="mt-4 hidden">
                                         <div class="flex items-center">
                                             <svg
                                                 class="w-4 h-4 text-yellow-300 me-1"
@@ -197,7 +210,7 @@
                                         <p
                                             class="text-center text-xs text-gray-500"
                                         >
-                                            Chỉ còn 5 phòng
+                                            Chỉ còn 3 phòng
                                         </p>
                                     </div>
                                 </div>
@@ -211,143 +224,155 @@
                     v-if="showFilter || screenWidth >= 768"
                     class="w-full md:w-80 bg-white p-4 rounded-2xl shadow self-start md:sticky md:top-6 h-fit order-2 md:order-none"
                 >
-                    <!-- Bản đồ -->
-                    <div class="mb-6">
-                        <div
-                            class="h-32 bg-gray-200 rounded-lg flex items-center justify-center"
-                        >
-                            <span class="text-orange-500 font-medium"
-                                >Xem trên bản đồ</span
+                    <div class="text-orange-500 font-medium">
+                        <p>Zalo/Hotline để đăng Tin miễn phí:</p>
+                        <p>
+                            <a
+                                href="tel:0937704598"
+                                class="text-blue-400 hover:underline"
+                                >0937 704 598</a
                             >
-                        </div>
+                        </p>
                     </div>
-
-                    <!-- Tìm kiếm -->
-                    <section class="mb-6">
-                        <h3 class="font-semibold mb-2">Tìm kiếm</h3>
-                        <input
-                            type="text"
-                            placeholder="Nhập tên nhà trọ..."
-                            class="block w-full p-3 text-gray-900 border border-gray-300 rounded-lg text-base focus:outline-none focus:border-gray-400"
-                        />
-                    </section>
-
-                    <!-- Khoảng giá -->
-                    <section class="mb-6">
-                        <h3 class="font-semibold mb-2">Khoảng giá</h3>
-                        <input
-                            id="default-range"
-                            type="range"
-                            value="1000"
-                            min="1500000"
-                            max="10000000"
-                            class="w-full h-3 bg-gray-200 rounded-lg appearance-none cursor-pointer"
-                        />
-                        <div
-                            class="flex justify-between text-sm text-gray-500 mt-1"
-                        >
-                            <span>300.000đ</span>
-                            <span>10.000.000đ</span>
+                    <div class="hidden">
+                        <!-- Bản đồ -->
+                        <div class="mb-6">
+                            <div
+                                class="h-32 bg-gray-200 rounded-lg flex items-center justify-center"
+                            >
+                                <span class="text-orange-500 font-medium"
+                                    >Xem trên bản đồ</span
+                                >
+                            </div>
                         </div>
-                    </section>
 
-                    <!-- Điểm đánh giá -->
-                    <section class="mb-6">
-                        <h3 class="font-semibold mb-2">Điểm đánh giá</h3>
-                        <div class="space-y-2">
-                            <label class="flex items-center gap-2">
-                                <input
-                                    type="radio"
-                                    class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded-sm"
-                                />
-                                ≥ 4.5 ⭐
-                            </label>
-                            <label class="flex items-center gap-2">
-                                <input
-                                    type="radio"
-                                    class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded-sm"
-                                />
-                                ≥ 4.0 ⭐
-                            </label>
-                            <label class="flex items-center gap-2">
-                                <input
-                                    type="radio"
-                                    class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded-sm"
-                                />
-                                ≥ 3.5 ⭐
-                            </label>
-                        </div>
-                    </section>
+                        <!-- Tìm kiếm -->
+                        <section class="mb-6">
+                            <h3 class="font-semibold mb-2">Tìm kiếm</h3>
+                            <input
+                                type="text"
+                                placeholder="Nhập tên nhà trọ..."
+                                class="block w-full p-3 text-gray-900 border border-gray-300 rounded-lg text-base focus:outline-none focus:border-gray-400"
+                            />
+                        </section>
 
-                    <!-- Tiện ích -->
-                    <section class="mb-6">
-                        <h3 class="font-semibold mb-2">Tiện ích</h3>
-                        <div class="space-y-2 text-sm">
-                            <label class="flex items-center gap-2">
-                                <input
-                                    type="checkbox"
-                                    class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded-sm"
-                                />
-                                Wi-Fi miễn phí
-                            </label>
-                            <label class="flex items-center gap-2">
-                                <input
-                                    type="checkbox"
-                                    class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded-sm"
-                                />
-                                Quản lý 24/24
-                            </label>
-                            <label class="flex items-center gap-2">
-                                <input
-                                    type="checkbox"
-                                    class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded-sm"
-                                />
-                                Bãi giữ xe
-                            </label>
-                            <label class="flex items-center gap-2">
-                                <input
-                                    type="checkbox"
-                                    class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded-sm"
-                                />
-                                Thang máy
-                            </label>
-                        </div>
-                    </section>
+                        <!-- Khoảng giá -->
+                        <section class="mb-6">
+                            <h3 class="font-semibold mb-2">Khoảng giá</h3>
+                            <input
+                                id="default-range"
+                                type="range"
+                                value="1000"
+                                min="1500000"
+                                max="10000000"
+                                class="w-full h-3 bg-gray-200 rounded-lg appearance-none cursor-pointer"
+                            />
+                            <div
+                                class="flex justify-between text-sm text-gray-500 mt-1"
+                            >
+                                <span>300.000đ</span>
+                                <span>10.000.000đ</span>
+                            </div>
+                        </section>
 
-                    <!-- Gần khu vực -->
-                    <section>
-                        <h3 class="font-semibold mb-2">Gần Khu vực</h3>
-                        <div class="space-y-2 text-sm">
-                            <label class="flex items-center gap-2">
-                                <input
-                                    type="checkbox"
-                                    class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded-sm"
-                                />
-                                Chợ
-                            </label>
-                            <label class="flex items-center gap-2">
-                                <input
-                                    type="checkbox"
-                                    class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded-sm"
-                                />
-                                Trường học
-                            </label>
-                            <label class="flex items-center gap-2">
-                                <input
-                                    type="checkbox"
-                                    class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded-sm"
-                                />
-                                Cửa hàng tiện lợi
-                            </label>
-                            <label class="flex items-center gap-2">
-                                <input
-                                    type="checkbox"
-                                    class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded-sm"
-                                />
-                                Khu công nghiệp
-                            </label>
-                        </div>
-                    </section>
+                        <!-- Điểm đánh giá -->
+                        <section class="mb-6">
+                            <h3 class="font-semibold mb-2">Điểm đánh giá</h3>
+                            <div class="space-y-2">
+                                <label class="flex items-center gap-2">
+                                    <input
+                                        type="radio"
+                                        class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded-sm"
+                                    />
+                                    ≥ 4.5 ⭐
+                                </label>
+                                <label class="flex items-center gap-2">
+                                    <input
+                                        type="radio"
+                                        class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded-sm"
+                                    />
+                                    ≥ 4.0 ⭐
+                                </label>
+                                <label class="flex items-center gap-2">
+                                    <input
+                                        type="radio"
+                                        class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded-sm"
+                                    />
+                                    ≥ 3.5 ⭐
+                                </label>
+                            </div>
+                        </section>
+
+                        <!-- Tiện ích -->
+                        <section class="mb-6">
+                            <h3 class="font-semibold mb-2">Tiện ích</h3>
+                            <div class="space-y-2 text-sm">
+                                <label class="flex items-center gap-2">
+                                    <input
+                                        type="checkbox"
+                                        class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded-sm"
+                                    />
+                                    Wi-Fi miễn phí
+                                </label>
+                                <label class="flex items-center gap-2">
+                                    <input
+                                        type="checkbox"
+                                        class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded-sm"
+                                    />
+                                    Quản lý 24/24
+                                </label>
+                                <label class="flex items-center gap-2">
+                                    <input
+                                        type="checkbox"
+                                        class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded-sm"
+                                    />
+                                    Bãi giữ xe
+                                </label>
+                                <label class="flex items-center gap-2">
+                                    <input
+                                        type="checkbox"
+                                        class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded-sm"
+                                    />
+                                    Thang máy
+                                </label>
+                            </div>
+                        </section>
+
+                        <!-- Gần khu vực -->
+                        <section>
+                            <h3 class="font-semibold mb-2">Gần Khu vực</h3>
+                            <div class="space-y-2 text-sm">
+                                <label class="flex items-center gap-2">
+                                    <input
+                                        type="checkbox"
+                                        class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded-sm"
+                                    />
+                                    Chợ
+                                </label>
+                                <label class="flex items-center gap-2">
+                                    <input
+                                        type="checkbox"
+                                        class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded-sm"
+                                    />
+                                    Trường học
+                                </label>
+                                <label class="flex items-center gap-2">
+                                    <input
+                                        type="checkbox"
+                                        class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded-sm"
+                                    />
+                                    Cửa hàng tiện lợi
+                                </label>
+                                <label class="flex items-center gap-2">
+                                    <input
+                                        type="checkbox"
+                                        class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded-sm"
+                                    />
+                                    Khu công nghiệp
+                                </label>
+                            </div>
+                        </section>
+                    </div>
                 </aside>
             </div>
         </div>

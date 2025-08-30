@@ -35,10 +35,10 @@
 
                 <!-- Đăng tin miễn phí button -->
                 <NuxtLink
-                    to="/"
+                    to="/about"
                     class="ml-4 bg-white hover:bg-orange-100 border text-orange-600 font-semibold py-2 px-4 rounded-lg transition-colors"
                 >
-                    Đăng tin miễn phí
+                    Liên hệ - Đăng tin miễn phí
                 </NuxtLink>
             </div>
 
@@ -104,11 +104,11 @@
 
             <!-- Mobile Đăng tin miễn phí button -->
             <NuxtLink
-                to="/"
+                to="/about"
                 @click="isOpen = false"
                 class="block mt-2 bg-white hover:bg-orange-100 border text-orange-600 font-semibold py-2 px-4 rounded-lg text-center transition-colors"
             >
-                Đăng tin miễn phí
+                Liên hệ - Đăng tin miễn phí
             </NuxtLink>
         </div>
     </header>

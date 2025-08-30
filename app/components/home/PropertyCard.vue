@@ -63,7 +63,11 @@
                         </svg>
                     </p>
                     <p class="text-sm text-gray-600">
-                        {{ property.area }}m² · {{ SET_TEXT_DIRECTION_ROOM(1) }}
+                        {{ property.area }}m²
+                        <span v-if="property.viewRoom">
+                            ·
+                            {{ SET_TEXT_DIRECTION_ROOM(property.viewRoom) }}
+                        </span>
                     </p>
                 </div>
 
@@ -76,7 +80,7 @@
                     <div
                         class="px-2 py-1 bg-green-100 text-green-800 text-xs font-semibold rounded"
                     >
-                        <p class="text-xs text-gray-500">Chỉ còn 5 phòng</p>
+                        <p class="text-xs text-gray-500">Chỉ còn 3 phòng</p>
                     </div>
                 </div>
             </div>
