@@ -107,7 +107,7 @@
                                             ? hotel.imageList[0].imagePath
                                             : '/images/og-image.png'
                                     "
-                                    class="w-full md:w-[200px] h-[150px] object-cover rounded-xl"
+                                    class="w-full md:w-[200px] h-56 sm:h-[150px] object-cover rounded-xl"
                                 />
                                 <div class="flex-1">
                                     <NuxtLink

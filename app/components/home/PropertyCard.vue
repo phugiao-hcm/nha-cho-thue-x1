@@ -13,7 +13,7 @@
         <img
             :src="property.imageList?.[0]?.imagePath || '/images/og-image.png'"
             alt="property"
-            class="w-full h-48 object-cover rounded-t"
+            class="w-full h-52 sm:h-56 object-cover rounded-t"
         />
 
         <!-- Badge -->
