@@ -156,7 +156,10 @@
                     class="text-gray-700 whitespace-pre-line leading-relaxed"
                     v-html="property.description"
                 />
-                <!-- <div class="mt-4 flex flex-wrap items-center gap-2">
+                <div
+                    v-if="property.mobileLandlord"
+                    class="mt-4 flex flex-wrap items-center gap-2"
+                >
                     <span class="font-semibold">SĐT Liên hệ:</span>
                     <span
                         class="bg-gray-100 px-3 py-1 rounded-lg text-gray-700"
@@ -169,7 +172,7 @@
                     >
                         Hiện SĐT
                     </button>
-                </div> -->
+                </div>
             </div>
 
             <!-- Section Google Maps -->
@@ -267,7 +270,7 @@ const property = ref(null);
 // ẩn hiện số điện thoại
 const showPhone = ref(false);
 const maskedPhone = computed(() =>
-    showPhone.value ? "093770459" : "093770 ***"
+    showPhone.value ? property.value.mobileLandlord : "**** *** ***"
 );
 
 onMounted(() => {
