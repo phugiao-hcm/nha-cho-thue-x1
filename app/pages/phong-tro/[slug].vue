@@ -240,6 +240,19 @@ const { $amplitude } = useNuxtApp();
 import { useRoute } from "vue-router";
 const route = useRoute();
 
+definePageMeta({
+    alias: ["/phong-tro/:slug"], // URL phụ
+});
+
+useHead({
+    link: [
+        {
+            rel: "canonical",
+            href: "https://trodayroi.vn/phong-tro/" + route.params.slug,
+        },
+    ],
+});
+
 const ui = reactive({
     isLoading: false,
 });
@@ -273,6 +286,11 @@ const maskedPhone = computed(() =>
     showPhone.value ? property.value.mobileLandlord : "**** *** ***"
 );
 
+// slug = "nha-tro-tan-thanh-123"
+const slug = route.params.slug;
+// Tách ID (sau dấu "-" cuối cùng)
+const id = slug.split("-").pop();
+
 onMounted(() => {
     $amplitude.track("view_room_detail", {
         label: "Xem chi tiết phòng",
@@ -284,7 +302,7 @@ onMounted(() => {
 const fetchProjects = async () => {
     try {
         ui.isLoading = true;
-        property.value = await getPostDetail(route.params.id);
+        property.value = await getPostDetail(id);
     } catch (e) {
         console.error(e);
     } finally {

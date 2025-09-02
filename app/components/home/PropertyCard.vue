@@ -1,6 +1,8 @@
 <template>
     <NuxtLink
-        :to="isAvailableRooms ? `/properties/${property.id}` : ''"
+        :to="
+            isAvailableRooms ? `/phong-tro/${property.slug}-${property.id}` : ''
+        "
         @click="isAvailableRooms && onClickViewPostDetail()"
         class="relative rounded shadow transition cursor-pointer"
         :class="
