@@ -16,6 +16,10 @@ export default defineNuxtConfig({
         buildAssetsDir: "_nuxt/", // default, giữ nguyên
         head: {
             title: "Cho thuê phòng trọ Huyện Phú Giáo - Tìm nhà trọ giá rẻ, uy tín",
+            link: [
+                { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+                // { rel: 'apple-touch-icon', href: '/apple-touch-icon.png' }, // tùy chọn thêm
+            ],
             meta: [
                 {
                     name: "google-site-verification",
