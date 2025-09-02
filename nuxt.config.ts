@@ -96,14 +96,34 @@ export default defineNuxtConfig({
     site: {
         url: "https://trodayroi.vn", // 🔁 sửa đúng URL GitHub Pages của bạn
     },
+     // ✅ Sitemap cấu hình SEO
     sitemap: {
         sitemapName: "sitemap.xml",
-        exclude: ["/admin/**"],
+        gzip: true,
+        exclude: ["/admin/**", "/properties/**"],
+        defaults: {
+            changefreq: "daily",  // gợi ý Google crawl hàng ngày
+            priority: 0.8,        // ưu tiên cao hơn cho page động
+        },
+        routes: async () => {
+            const rooms = await fetch("https://trodayroi.vn/api/properties").then((res) => res.json());
+            return rooms.map((r: any) => ({
+            url: `/phong-tro/${r.slug}-${r.id}`,
+            lastmod: r.updatedAt || new Date().toISOString(),
+            priority: 0.9, // tin đăng quan trọng
+            }));
+        },
     },
 
     robots: {
-        robotsTxt: false,
+        rules: [
+            { userAgent: "*", disallow: ["/admin/", "/properties/"] },
+            { userAgent: "*", allow: "/" },
+        ],
+            sitemap: "https://trodayroi.vn/sitemap.xml", // ⚡ thêm link sitemap
     },
+
+
     compatibilityDate: "2025-07-15",
     devtools: { enabled: true },
     css: ["~/assets/css/main.css"],
