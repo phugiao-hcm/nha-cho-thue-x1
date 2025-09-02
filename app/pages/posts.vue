@@ -114,7 +114,7 @@
                                         :to="
                                             hotel.availableRooms === 0
                                                 ? ''
-                                                : `/properties/${hotel.id}`
+                                                : `/phong-tro/${hotel.slug}-${hotel.id}`
                                         "
                                         :class="
                                             hotel.availableRooms === 0
