@@ -82,14 +82,14 @@
                                 :key="hotel.id"
                                 class="bg-white rounded-2xl shadow p-4 flex flex-col md:flex-row gap-4 relative"
                                 :class="
-                                    hotel.availableRooms === 0
+                                    hotel.numORoomAvailable === 0
                                         ? 'opacity-70 bg-gray-100 cursor-not-allowed'
                                         : ''
                                 "
                             >
                                 <!-- Badge trạng thái -->
                                 <span
-                                    v-if="hotel.availableRooms === 0"
+                                    v-if="hotel.numORoomAvailable === 0"
                                     class="absolute top-4 left-4 bg-red-600 text-white text-xs font-semibold px-2 py-1 rounded"
                                 >
                                     Hết phòng
@@ -98,7 +98,7 @@
                                     v-else
                                     class="absolute top-4 left-4 bg-green-600 text-white text-xs font-semibold px-2 py-1 rounded"
                                 >
-                                    Còn {{ hotel.availableRooms }} phòng
+                                    Còn {{ hotel.numORoomAvailable }} phòng
                                 </span>
 
                                 <img
@@ -112,24 +112,24 @@
                                 <div class="flex-1">
                                     <NuxtLink
                                         :to="
-                                            hotel.availableRooms === 0
+                                            hotel.numORoomAvailable === 0
                                                 ? ''
                                                 : `/phong-tro/${hotel.slug}-${hotel.id}`
                                         "
                                         :class="
-                                            hotel.availableRooms === 0
+                                            hotel.numORoomAvailable === 0
                                                 ? 'pointer-events-none'
                                                 : ''
                                         "
                                         @click="
-                                            hotel.availableRooms > 0 &&
+                                            hotel.numORoomAvailable > 0 &&
                                                 onClickViewRoomDetail
                                         "
                                     >
                                         <h3
                                             class="font-semibold mb-2"
                                             :class="
-                                                hotel.availableRooms === 0
+                                                hotel.numORoomAvailable === 0
                                                     ? 'text-gray-400'
                                                     : 'text-blue-600 dark:text-blue-500'
                                             "
@@ -242,7 +242,7 @@
                                     <p
                                         class="text-lg font-semibold"
                                         :class="
-                                            hotel.availableRooms === 0
+                                            hotel.numORoomAvailable === 0
                                                 ? 'text-gray-400'
                                                 : 'text-orange-600'
                                         "
@@ -250,11 +250,12 @@
                                         {{ formatPriceVND(hotel.price) }} /tháng
                                     </p>
                                     <div
-                                        v-if="hotel.availableRooms > 0"
+                                        v-if="hotel.numORoomAvailable > 0"
                                         class="mt-1 px-2 py-1 bg-green-100 text-green-800 text-xs font-semibold rounded"
                                     >
                                         <p class="text-center text-xs">
-                                            Còn {{ hotel.availableRooms }} phòng
+                                            Còn
+                                            {{ hotel.numORoomAvailable }} phòng
                                         </p>
                                     </div>
                                 </div>
@@ -450,7 +451,6 @@ const handleResize = () => {
 
 // Mock data
 const loading = ref(true);
-
 onMounted(async () => {
     window.addEventListener("resize", handleResize);
 
