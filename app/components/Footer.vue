@@ -21,7 +21,7 @@
                 <h3 class="font-semibold mb-3">Liên kết nhanh</h3>
                 <ul class="space-y-2 text-sm text-gray-300">
                     <li>
-                        <NuxtLink to="/projects" class="hover:text-blue-400">
+                        <NuxtLink to="/posts" class="hover:text-blue-400">
                             Phòng trọ
                         </NuxtLink>
                     </li>
@@ -38,7 +38,7 @@
                 <h3 class="font-semibold mb-3">Kết nối với chúng tôi</h3>
                 <div class="flex space-x-4">
                     <a
-                        href="https://www.facebook.com/ffer.tosu/"
+                        href="https://www.facebook.com/groups/1513290416777599"
                         class="hover:text-blue-400 flex items-center space-x-1"
                     >
                         <i class="i-lucide-facebook" /> <span>Facebook</span>
