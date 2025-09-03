@@ -129,5 +129,5 @@ const onClickViewPostDetail = () => {
     });
 };
 
-const isAvailableRooms = computed(() => !props.isAvailableRooms);
+const isAvailableRooms = computed(() => props.property.numORoomAvailable);
 </script>
