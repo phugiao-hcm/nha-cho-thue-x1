@@ -60,6 +60,12 @@ export default defineNuxtConfig({
                 },
                 // SEO chính
                 {
+                    name: "apple-mobile-web-app-title",
+                    content:
+                        "Trọ Phú Giáo, KCN Tân Bình, Bàu Bàng, Hưng Hoà, Bến Cát | trodayroi.vn",
+                },
+                { name: "application-name", content: "trodayroi.vn" },
+                {
                     name: "description",
                     content:
                         "Website đăng tin cho thuê phòng trọ, nhà trọ, căn hộ tại Huyện Phú Giáo. Dễ dàng tìm kiếm trọ giá rẻ, gần trường học, khu công nghiệp, phù hợp sinh viên và người lao động.",
