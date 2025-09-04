@@ -17,9 +17,41 @@ export default defineNuxtConfig({
         head: {
             title: "Cho thuê phòng trọ Huyện Phú Giáo - Tìm nhà trọ giá rẻ, uy tín",
             link: [
-                { rel: "icon", type: "image/x-icon", href: "/favicon.ico" },
-                { rel: "icon", type: "image/png", href: "/favicon.png" },
-                // { rel: 'apple-touch-icon', href: '/apple-touch-icon.png' }, // tùy chọn thêm
+                // Favicon chuẩn cho browser hiện đại
+                {
+                    rel: "icon",
+                    type: "image/png",
+                    sizes: "16x16",
+                    href: "/favicon-16x16.png",
+                },
+                {
+                    rel: "icon",
+                    type: "image/png",
+                    sizes: "32x32",
+                    href: "/favicon-32x32.png",
+                },
+                {
+                    rel: "icon",
+                    type: "image/png",
+                    sizes: "96x96",
+                    href: "/favicon-96x96.png",
+                },
+
+                // SVG (ưu tiên nếu browser hỗ trợ)
+                { rel: "icon", type: "image/svg+xml", href: "/favicon.svg" },
+
+                // ICO (fallback cho browser cũ)
+                { rel: "shortcut icon", href: "/favicon.ico" },
+
+                // iOS
+                {
+                    rel: "apple-touch-icon",
+                    sizes: "180x180",
+                    href: "/apple-touch-icon.png",
+                },
+
+                // Manifest cho Android + PWA
+                { rel: "manifest", href: "/site.webmanifest" },
             ],
             meta: [
                 {
@@ -97,21 +129,23 @@ export default defineNuxtConfig({
     site: {
         url: "https://trodayroi.vn", // 🔁 sửa đúng URL GitHub Pages của bạn
     },
-     // ✅ Sitemap cấu hình SEO
+    // ✅ Sitemap cấu hình SEO
     sitemap: {
         sitemapName: "sitemap.xml",
         gzip: true,
         exclude: ["/admin/**", "/properties/**"],
         defaults: {
-            changefreq: "daily",  // gợi ý Google crawl hàng ngày
-            priority: 0.8,        // ưu tiên cao hơn cho page động
+            changefreq: "daily", // gợi ý Google crawl hàng ngày
+            priority: 0.8, // ưu tiên cao hơn cho page động
         },
         routes: async () => {
-            const rooms = await fetch("https://trodayroi.vn/api/properties").then((res) => res.json());
+            const rooms = await fetch(
+                "https://trodayroi.vn/api/properties"
+            ).then((res) => res.json());
             return rooms.map((r: any) => ({
-            url: `/phong-tro/${r.slug}-${r.id}`,
-            lastmod: r.updatedAt || new Date().toISOString(),
-            priority: 0.9, // tin đăng quan trọng
+                url: `/phong-tro/${r.slug}-${r.id}`,
+                lastmod: r.updatedAt || new Date().toISOString(),
+                priority: 0.9, // tin đăng quan trọng
             }));
         },
     },
@@ -121,9 +155,8 @@ export default defineNuxtConfig({
             { userAgent: "*", disallow: ["/admin/", "/properties/"] },
             { userAgent: "*", allow: "/" },
         ],
-            sitemap: "https://trodayroi.vn/sitemap.xml", // ⚡ thêm link sitemap
+        sitemap: "https://trodayroi.vn/sitemap.xml", // ⚡ thêm link sitemap
     },
-
 
     compatibilityDate: "2025-07-15",
     devtools: { enabled: true },
