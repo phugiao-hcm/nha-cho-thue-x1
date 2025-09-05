@@ -139,14 +139,14 @@ export default defineNuxtConfig({
     sitemap: {
         sitemapName: "sitemap.xml",
         gzip: true,
-        exclude: ["/admin/**", "/properties/**"],
+        exclude: ["/admin/**", "/phong-tro/**"],
         defaults: {
             changefreq: "daily", // gợi ý Google crawl hàng ngày
             priority: 0.8, // ưu tiên cao hơn cho page động
         },
         routes: async () => {
             const rooms = await fetch(
-                "https://trodayroi.vn/api/properties"
+                "https://trodayroi.vn/api/phong-tro"
             ).then((res) => res.json());
             return rooms.map((r: any) => ({
                 url: `/phong-tro/${r.slug}-${r.id}`,
@@ -158,7 +158,7 @@ export default defineNuxtConfig({
 
     robots: {
         rules: [
-            { userAgent: "*", disallow: ["/admin/", "/properties/"] },
+            { userAgent: "*", disallow: ["/admin/", "/phong-tro/"] },
             { userAgent: "*", allow: "/" },
         ],
         sitemap: "https://trodayroi.vn/sitemap.xml", // ⚡ thêm link sitemap
