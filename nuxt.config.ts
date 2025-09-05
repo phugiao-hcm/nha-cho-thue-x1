@@ -139,7 +139,7 @@ export default defineNuxtConfig({
     sitemap: {
         sitemapName: "sitemap.xml",
         gzip: true,
-        exclude: ["/admin/**", "/phong-tro/**"],
+        exclude: ["/admin/**"],
         defaults: {
             changefreq: "daily", // gợi ý Google crawl hàng ngày
             priority: 0.8, // ưu tiên cao hơn cho page động
@@ -158,7 +158,7 @@ export default defineNuxtConfig({
 
     robots: {
         rules: [
-            { userAgent: "*", disallow: ["/admin/", "/phong-tro/"] },
+            { userAgent: "*", disallow: ["/admin/"] },
             { userAgent: "*", allow: "/" },
         ],
         sitemap: "https://trodayroi.vn/sitemap.xml", // ⚡ thêm link sitemap
