@@ -71,7 +71,7 @@
             <h1
                 class="text-xl sm:text-lg md:text-xl font-bold text-gray-800 mt-2"
             >
-                {{ property.title }}
+                {{ property.nameAccommodation }}
             </h1>
 
             <!-- Giá + diện tích -->
