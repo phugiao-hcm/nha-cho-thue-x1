@@ -17,9 +17,6 @@ jobs:
       # Pick your own package manager and build script
       - run: npm install
 
-      # 👉 Thêm bước generate sitemap trước khi build
-      - run: node scripts/generate-sitemap.cjs
-
       # Build project
       - run: npx nuxt build --preset github_pages
       - name: Upload artifact
