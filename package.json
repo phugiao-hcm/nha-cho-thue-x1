@@ -3,9 +3,8 @@
     "private": true,
     "type": "module",
     "scripts": {
-        "build": "yarn generate-sitemap && nuxt build",
+        "build": "nuxt build",
         "dev": "nuxt dev",
-        "generate-sitemap": "node scripts/generate-sitemap.cjs",
         "generate": "nuxt generate",
         "preview": "nuxt preview",
         "postinstall": "nuxt prepare"
