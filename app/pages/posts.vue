@@ -7,9 +7,9 @@
                 <h1
                     class="text-3xl md:text-4xl font-extrabold text-orange-500 mb-3 relative inline-block"
                 >
-                    Phòng trọ Phú Giáo, Bình Dương
+                    Phòng trọ Phú Giáo, KCN Tân Bình, Bình Dương
                     <span
-                        class="absolute left-0 -bottom-1 w-20 h-1 bg-orange-500 rounded-full"
+                        class="absolute left-0 -bottom-1 w-50 h-1 bg-orange-500 rounded-full"
                     ></span>
                 </h1>
                 <p class="text-gray-600 mb-8 max-w-xl">

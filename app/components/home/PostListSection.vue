@@ -10,7 +10,8 @@
                 ></span>
             </h1>
             <p class="text-gray-600 mb-8 max-w-xl">
-                Tìm kiếm các chỗ ở đẹp và phù hợp nhất với bạn tại Phú Giáo
+                Tìm kiếm các chỗ ở đẹp và phù hợp nhất với bạn tại Phú Giáo, KCN
+                Tân Bình
             </p>
 
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
