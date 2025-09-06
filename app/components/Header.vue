@@ -14,7 +14,7 @@
                     alt="Logo"
                     class="h-8 inline mr-2"
                 />
-                Trọ Phú Giáo
+                Trọ Đây Rồi
             </NuxtLink>
 
             <!-- Desktop Navigation + Button -->

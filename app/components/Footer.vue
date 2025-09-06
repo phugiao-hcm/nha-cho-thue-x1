@@ -5,10 +5,10 @@
         >
             <!-- Logo & giới thiệu -->
             <div>
-                <h2 class="text-xl font-bold mb-2">Trọ Phú Giáo</h2>
+                <h2 class="text-xl font-bold mb-2">Trọ Đây Rồi</h2>
                 <p class="text-gray-400 text-sm">
-                    Nơi kết nối nhà trọ Phú Giáo. Uy tín - Minh bạch - Tận tâm
-                    phục vụ.
+                    Nơi kết nối nhà cho thuê tại Phú Giáo, KCN Tân Bình, Bắc Tân
+                    Uyên. Uy tín - Minh bạch - Tận tâm phục vụ.
                 </p>
                 <p class="text-gray-400 text-sm mt-3">
                     <strong>Địa chỉ:</strong> Xã Phước Hòa, Huyện Phú Giáo, Tỉnh
@@ -59,7 +59,7 @@
         <div
             class="mt-8 border-t border-gray-700 pt-4 text-center text-sm text-gray-500"
         >
-            &copy; 2025 Trọ Phú Giáo. All rights reserved.
+            &copy; 2025 Trọ Đây Rồi. All rights reserved.
         </div>
     </footer>
 </template>
