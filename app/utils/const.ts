@@ -1,3 +1,7 @@
+
+export const API_BASE = 'https://api.kongricsstudio.com/api';
+
+
 export const DIRECTION_ROOM = {
   East: 1, // Hướng Đông
   West: 2, // Hướng Tây

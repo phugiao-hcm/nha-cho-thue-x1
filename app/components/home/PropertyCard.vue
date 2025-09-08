@@ -1,8 +1,6 @@
 <template>
     <NuxtLink
-        :to="
-            isAvailableRooms ? `/phong-tro/${property.slug}-${property.id}` : ''
-        "
+        :to="isAvailableRooms ? `/phong-tro/${setSlug}-${property.id}` : ''"
         @click="isAvailableRooms && onClickViewPostDetail()"
         class="relative rounded shadow transition cursor-pointer"
         :class="
@@ -13,7 +11,7 @@
     >
         <!-- Ảnh -->
         <img
-            :src="property.imageList?.[0]?.imagePath || '/images/og-image.png'"
+            :src="property.thumbnail || '/images/og-image.png'"
             alt="property"
             class="w-full h-52 sm:h-56 object-cover rounded-t"
         />
@@ -29,7 +27,7 @@
         <!-- Nội dung -->
         <div class="p-4">
             <h3 class="text-lg font-semibold mb-3">
-                {{ property.nameAccommodation }}
+                {{ property.title }}
             </h3>
 
             <!-- Địa chỉ -->
@@ -58,7 +56,7 @@
                 <p
                     class="text-sm text-gray-800 truncate overflow-hidden whitespace-nowrap"
                 >
-                    {{ property.address }}
+                    {{ property.houseNo }}
                 </p>
             </div>
 
@@ -81,11 +79,11 @@
                     </svg>
                 </p>
                 <p class="text-sm text-gray-600">
-                    {{ property.area }}m²
-                    <span v-if="property.viewRoom">
+                    {{ property.square }}m²
+                    <!-- <span v-if="property.viewRoom">
                         ·
                         {{ SET_TEXT_DIRECTION_ROOM(property.viewRoom) }}
-                    </span>
+                    </span> -->
                 </p>
             </div>
 
@@ -111,7 +109,7 @@
 
 
 <script setup lang="ts">
-import { formatPriceVND } from "~/utils/format";
+import { formatPriceVND, slugify } from "~/utils/format";
 import { DIRECTION_ROOM } from "~/utils/const";
 const { $amplitude } = useNuxtApp();
 import { computed } from "vue";
@@ -129,5 +127,7 @@ const onClickViewPostDetail = () => {
     });
 };
 
-const isAvailableRooms = computed(() => props.property.numORoomAvailable);
+// const isAvailableRooms = computed(() => props.property.numORoomAvailable);
+const isAvailableRooms = computed(() => true);
+const setSlug = computed(() => slugify(props.property.title));
 </script>
