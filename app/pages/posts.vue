@@ -82,14 +82,14 @@
                                 :key="hotel.id"
                                 class="bg-white rounded-2xl shadow p-4 flex flex-col md:flex-row gap-4 relative"
                                 :class="
-                                    hotel.numORoomAvailable === 0
+                                    hotel?.numORoomAvailable === 0
                                         ? 'opacity-70 bg-gray-100 cursor-not-allowed'
                                         : ''
                                 "
                             >
                                 <!-- Badge trạng thái -->
                                 <span
-                                    v-if="hotel.numORoomAvailable === 0"
+                                    v-if="hotel?.numORoomAvailable === 0"
                                     class="absolute top-4 left-4 bg-red-600 text-white text-xs font-semibold px-2 py-1 rounded"
                                 >
                                     Hết phòng
@@ -98,13 +98,13 @@
                                     v-else
                                     class="absolute top-4 left-4 bg-green-600 text-white text-xs font-semibold px-2 py-1 rounded"
                                 >
-                                    Còn {{ hotel.numORoomAvailable }} phòng
+                                    Còn {{ hotel?.numORoomAvailable }} phòng
                                 </span>
 
                                 <img
                                     :src="
-                                        hotel.imageList
-                                            ? hotel.imageList[0].imagePath
+                                        hotel.thumbnail
+                                            ? hotel.thumbnail
                                             : '/images/og-image.png'
                                     "
                                     class="w-full md:w-[200px] h-56 sm:h-[150px] object-cover rounded-xl"
@@ -112,29 +112,31 @@
                                 <div class="flex-1">
                                     <NuxtLink
                                         :to="
-                                            hotel.numORoomAvailable === 0
+                                            hotel?.numORoomAvailable === 0
                                                 ? ''
-                                                : `/phong-tro/${hotel.slug}-${hotel.id}`
+                                                : `/phong-tro/${slugify(
+                                                      hotel.title
+                                                  )}-${hotel.id}`
                                         "
                                         :class="
-                                            hotel.numORoomAvailable === 0
+                                            hotel?.numORoomAvailable === 0
                                                 ? 'pointer-events-none'
                                                 : ''
                                         "
                                         @click="
-                                            hotel.numORoomAvailable > 0 &&
+                                            hotel?.numORoomAvailable > 0 &&
                                                 onClickViewRoomDetail
                                         "
                                     >
                                         <h3
                                             class="font-semibold mb-2"
                                             :class="
-                                                hotel.numORoomAvailable === 0
+                                                hotel?.numORoomAvailable === 0
                                                     ? 'text-gray-400'
                                                     : 'text-blue-600 dark:text-blue-500'
                                             "
                                         >
-                                            {{ hotel.nameAccommodation }}
+                                            {{ hotel.title }}
                                         </h3>
                                     </NuxtLink>
 
@@ -162,7 +164,7 @@
                                             </svg>
                                         </P>
                                         <p class="text-sm text-gray-800">
-                                            {{ hotel.address }}
+                                            {{ hotel.houseNo }}
                                         </p>
                                     </div>
 
@@ -184,19 +186,19 @@
                                             </svg>
                                         </p>
                                         <p class="text-sm text-gray-600">
-                                            {{ hotel.area }}m² ·
-                                            <span v-if="hotel.viewRoom">
+                                            {{ hotel.square }}m² ·
+                                            <!-- <span v-if="hotel.viewRoom">
                                                 ·
                                                 {{
                                                     SET_TEXT_DIRECTION_ROOM(
                                                         hotel.viewRoom
                                                     )
                                                 }}
-                                            </span>
+                                            </span> -->
                                         </p>
                                     </div>
 
-                                    <div class="mb-1 flex flex-wrap">
+                                    <!-- <div class="mb-1 flex flex-wrap">
                                         <span
                                             v-for="(
                                                 label, index
@@ -207,7 +209,7 @@
                                             class="bg-blue-100 text-indigo-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded-sm mb-1"
                                             >{{ label }}</span
                                         >
-                                    </div>
+                                    </div> -->
 
                                     <div class="mt-4 hidden">
                                         <div class="flex items-center">
@@ -242,7 +244,7 @@
                                     <p
                                         class="text-lg font-semibold"
                                         :class="
-                                            hotel.numORoomAvailable === 0
+                                            hotel?.numORoomAvailable === 0
                                                 ? 'text-gray-400'
                                                 : 'text-orange-600'
                                         "
@@ -250,12 +252,12 @@
                                         {{ formatPriceVND(hotel.price) }} /tháng
                                     </p>
                                     <div
-                                        v-if="hotel.numORoomAvailable > 0"
+                                        v-if="hotel?.numORoomAvailable > 0"
                                         class="mt-1 px-2 py-1 bg-green-100 text-green-800 text-xs font-semibold rounded"
                                     >
                                         <p class="text-center text-xs">
                                             Còn
-                                            {{ hotel.numORoomAvailable }} phòng
+                                            {{ hotel?.numORoomAvailable }} phòng
                                         </p>
                                     </div>
                                 </div>
@@ -428,7 +430,7 @@
 import { ref, onMounted, onBeforeUnmount, computed } from "vue";
 import Skeleton from "@/components/skeleton/PostSkeleton.vue";
 import FilterSidebar from "~/components/posts/FilterSidebar.vue"; // đường dẫn đúng tới file
-import { getPostList } from "~/apis/posts";
+import { usePhongTroList } from "~/apis/posts";
 import { SET_TEXT_FACILITY_ROOM } from "~/utils/const";
 const { $amplitude } = useNuxtApp();
 
@@ -454,7 +456,9 @@ const loading = ref(true);
 onMounted(async () => {
     window.addEventListener("resize", handleResize);
 
-    hotels.value = await getPostList();
+    const { data, pending } = await usePhongTroList({ page: 1, limit: 20 });
+    // hotels.value = await usePhongTroList();
+    hotels.value = data.value.data.phongTroList;
     loading.value = false;
 });
 onBeforeUnmount(() => {

@@ -14,13 +14,16 @@
                 Tân Bình
             </p>
 
+            <!-- debug thử dữ liệu trả về -->
+            <!-- <pre>{{ postList }}</pre> -->
+
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
-                <template v-if="loading">
+                <template v-if="pending">
                     <Skeleton v-for="n in 4" :key="n" />
                 </template>
                 <template v-else>
                     <PropertyCard
-                        v-for="(item, index) in projects"
+                        v-for="(item, index) in postList"
                         :key="index"
                         :property="item"
                     />
@@ -30,18 +33,15 @@
     </section>
 </template>
 
-
-<script setup>
-import { reactive, computed, ref, onMounted } from "vue";
+<script setup lang="ts">
+import { ref, watch } from "vue";
 import PropertyCard from "./PropertyCard.vue";
-import { getPostList } from "~/apis/posts";
+import { usePhongTroList } from "~/apis/posts";
 import Skeleton from "~/components/skeleton/CardSkeleton.vue";
 
-const projects = ref([]);
-const loading = ref(true); // trạng thái loading
+const postList = ref<any[]>([]);
 
-onMounted(async () => {
-    projects.value = await getPostList();
-    loading.value = false;
-});
+// gọi API
+const { data, pending } = await usePhongTroList({ page: 1, limit: 20 });
+postList.value = data.value.data.phongTroList;
 </script>

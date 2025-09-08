@@ -23,12 +23,12 @@
                     }"
                 >
                     <swiper-slide
-                        v-for="(img, i) in property.imageList"
+                        v-for="(img, i) in property.photos"
                         :key="i"
                         class="box-border"
                     >
                         <img
-                            :src="img.imagePath"
+                            :src="img"
                             class="w-full h-48 sm:h-56 md:h-64 lg:h-80 object-scale-down"
                             @click="showLightbox(i)"
                         />
@@ -47,11 +47,11 @@
                     class="w-full"
                 >
                     <swiper-slide
-                        v-for="(img, i) in property.imageList"
+                        v-for="(img, i) in property.photos"
                         :key="'thumb-' + i"
                     >
                         <img
-                            :src="img.imagePath"
+                            :src="img"
                             class="w-full h-16 sm:h-20 object-cover rounded cursor-pointer"
                         />
                     </swiper-slide>
@@ -60,7 +60,7 @@
                 <!-- Lightbox popup -->
                 <VueEasyLightbox
                     :visible="visible"
-                    :imgs="property.imageList.map((x) => x.imagePath)"
+                    :imgs="property.photos.map((x) => x)"
                     :index="currentIndex"
                     @hide="visible = false"
                     :moveDisabled="true"
@@ -71,7 +71,7 @@
             <h1
                 class="text-xl sm:text-lg md:text-xl font-bold text-gray-800 mt-2"
             >
-                {{ property.nameAccommodation }}
+                {{ property.title }}
             </h1>
 
             <!-- Giá + diện tích -->
@@ -98,11 +98,11 @@
                         </svg>
                     </p>
                     <p class="text-sm text-gray-600">
-                        {{ property.area }}m²
-                        <span v-if="property.viewRoom">
+                        {{ property.square }}m²
+                        <!-- <span v-if="property.viewRoom">
                             ·
                             {{ SET_TEXT_DIRECTION_ROOM(property.viewRoom) }}
-                        </span>
+                        </span> -->
                     </p>
                 </div>
             </div>
@@ -112,7 +112,7 @@
                     >Tiện ích xung quanh:</span
                 >
                 <span
-                    v-for="(label, index) in facilityTexts(property.facilities)"
+                    v-for="(label, index) in facilityTexts(property.facility)"
                     :key="index"
                     class="bg-blue-100 text-indigo-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded-sm mb-1"
                     >{{ label }}</span
@@ -145,7 +145,7 @@
                     </svg>
                 </P>
                 <p class="text-sm text-gray-800">
-                    {{ property.address }}
+                    {{ property.houseNo }}
                 </p>
             </div>
 
@@ -154,10 +154,10 @@
                 <h2 class="font-bold text-lg mb-3">Mô tả chi tiết</h2>
                 <div
                     class="text-gray-700 whitespace-pre-line leading-relaxed"
-                    v-html="property.description"
+                    v-html="property.content"
                 />
                 <div
-                    v-if="property.mobileLandlord"
+                    v-if="property.authorMobile"
                     class="mt-4 flex flex-wrap items-center gap-2"
                 >
                     <span class="font-semibold">SĐT Liên hệ:</span>
@@ -233,7 +233,7 @@ import "swiper/css/free-mode";
 import "swiper/css/navigation";
 import "swiper/css/thumbs";
 import News from "@/components/posts/News.vue";
-import { getPostDetail } from "~/apis/posts";
+import { usePhongTroDetail } from "~/apis/posts";
 import VueEasyLightbox from "vue-easy-lightbox";
 const { $amplitude } = useNuxtApp();
 
@@ -283,7 +283,7 @@ const property = ref(null);
 // ẩn hiện số điện thoại
 const showPhone = ref(false);
 const maskedPhone = computed(() =>
-    showPhone.value ? property.value.mobileLandlord : "**** *** ***"
+    showPhone.value ? property.value.authorMobile : "**** *** ***"
 );
 
 // slug = "nha-tro-tan-thanh-123"
@@ -302,7 +302,10 @@ onMounted(() => {
 const fetchProjects = async () => {
     try {
         ui.isLoading = true;
-        property.value = await getPostDetail(id);
+        // property.value = await usePhongTroDetail(id);
+        const { data, pending, error } = await usePhongTroDetail(id);
+        console.log("data :", data);
+        property.value = data.value.data;
     } catch (e) {
         console.error(e);
     } finally {
