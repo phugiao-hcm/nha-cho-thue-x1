@@ -2,7 +2,7 @@
 import tailwindcss from "@tailwindcss/vite";
 
 export default defineNuxtConfig({
-    plugins: ["~/plugins/firebaseConfig.ts"],
+    plugins: ["~/plugins/firebaseConfig.ts", "~/plugins/google-analytics.client.ts"],
     ssr: false, // vì GitHub Pages chỉ hỗ trợ static
     target: "static", // không bắt buộc nhưng rõ ràng
     ogImage: {
@@ -132,16 +132,6 @@ export default defineNuxtConfig({
         },
     },
     modules: ["@nuxtjs/robots", "@nuxtjs/seo", "@nuxtjs/sitemap"],
-   
-   // gắn Google Analytics (GA4)
-    gtag: {
-        id: "G-862G2PFH3V", // Thay bằng GA4 Measurement ID
-        config: {
-            anonymize_ip: true, // Ẩn IP (tùy chọn)
-        },
-        // debug: process.env.NODE_ENV !== "production", // Log khi dev
-    },
-
     site: {
         url: "https://trodayroi.vn", // 🔁 sửa đúng URL GitHub Pages của bạn
     },

@@ -1284,11 +1284,6 @@
     vite-plugin-checker "^0.10.3"
     vue-bundle-renderer "^2.1.2"
 
-"@nuxtjs/google-gtag@^1.0.4":
-  version "1.0.4"
-  resolved "https://registry.yarnpkg.com/@nuxtjs/google-gtag/-/google-gtag-1.0.4.tgz#57562d8ec4c7694573e77edf72097da4a34b0d68"
-  integrity sha512-0Xgbx1uQ9pKeV2QdU9xoxJVdgH66qyGQJ0l8pzVxz5X476qvJunj6fbcjWk0gT+MEX/VOAhfT/zw0Z1z9q9oNg==
-
 "@nuxtjs/robots@^5.2.11", "@nuxtjs/robots@^5.5.1":
   version "5.5.1"
   resolved "https://registry.yarnpkg.com/@nuxtjs/robots/-/robots-5.5.1.tgz#3b59e749926733283792dd80a8289ee664fb719a"

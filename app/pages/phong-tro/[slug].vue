@@ -302,9 +302,7 @@ onMounted(() => {
 const fetchProjects = async () => {
     try {
         ui.isLoading = true;
-        // property.value = await usePhongTroDetail(id);
         const { data, pending, error } = await usePhongTroDetail(id);
-        console.log("data :", data);
         property.value = data.value.data;
     } catch (e) {
         console.error(e);
