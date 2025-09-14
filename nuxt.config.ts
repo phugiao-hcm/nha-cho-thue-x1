@@ -2,7 +2,7 @@
 import tailwindcss from "@tailwindcss/vite";
 
 export default defineNuxtConfig({
-    plugins: ["~/plugins/firebaseConfig.ts", "~/plugins/google-analytics.client.ts"],
+    plugins: ["~/plugins/google-analytics.client.ts"],
     ssr: false, // vì GitHub Pages chỉ hỗ trợ static
     target: "static", // không bắt buộc nhưng rõ ràng
     ogImage: {

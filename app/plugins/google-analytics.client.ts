@@ -4,10 +4,10 @@ export default defineNuxtPlugin(() => {
     const script = document.createElement("script")
     script.async = true
     script.src = "https://www.googletagmanager.com/gtag/js?id=G-862G2PFH3V"
-    document.head.appendChild(script)
+    document.head.appendChild(script);
 
     // Khởi tạo gtag
-    ;(window as any).dataLayer = (window as any).dataLayer || []
+    (window as any).dataLayer = (window as any).dataLayer || []
     function gtag(...args: any[]) {
       ;(window as any).dataLayer.push(args)
     }
