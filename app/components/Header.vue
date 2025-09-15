@@ -46,7 +46,7 @@
                     @click="onClickPostFree"
                     class="ml-4 bg-white hover:bg-orange-100 border text-orange-600 font-semibold py-2 px-4 rounded-lg transition-colors"
                 >
-                    Liên hệ - Đăng tin miễn phí
+                    Đăng tin miễn phí
                 </NuxtLink>
             </div>
 
@@ -116,7 +116,7 @@
                 @click="onClickPostFree"
                 class="block mt-2 bg-white hover:bg-orange-100 border text-orange-600 font-semibold py-2 px-4 rounded-lg text-center transition-colors"
             >
-                Liên hệ - Đăng tin miễn phí
+                Đăng tin miễn phí
             </NuxtLink>
         </div>
     </header>
@@ -133,6 +133,10 @@ const onClickPostFree = () => {
     $amplitude.track("button_header_clicked_post_free", {
         label: "(Header) - Liên hệ - Đăng tin miễn phí",
     });
+    window.open(
+        "https://phugiao-hcm.github.io/admin-dang-tin-thue-tro-x1/post/create",
+        "_blank"
+    );
 };
 
 const onClickAboutUs = () => {
