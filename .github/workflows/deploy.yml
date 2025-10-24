@@ -54,36 +54,21 @@ on:
 jobs:
     build:
         runs-on: ubuntu-latest
-        # steps:
-        #     - uses: actions/checkout@v4
-
-        #     - name: Setup Node.js
-        #       uses: actions/setup-node@v4
-        #       with:
-        #           node-version: "20"
-
-        #     - name: Install dependencies
-        #       run: yarn install
-
-        #     - name: Build Nuxt
-        #       run: yarn build
-
-        #     - name: Upload artifact for Pages
-        #       uses: actions/upload-pages-artifact@v3
-        #       with:
-        #           path: ./.output/public
         steps:
             - uses: actions/checkout@v4
-            - run: corepack enable
-            - uses: actions/setup-node@v4
+
+            - name: Setup Node.js
+              uses: actions/setup-node@v4
               with:
                   node-version: "20"
-            # Pick your own package manager and build script
-            - run: npm install
 
-            # Build project
-            - run: npx nuxt build --preset github_pages
-            - name: Upload artifact
+            - name: Install dependencies
+              run: yarn install
+
+            - name: Build Nuxt
+              run: yarn build
+
+            - name: Upload artifact for Pages
               uses: actions/upload-pages-artifact@v3
               with:
                   path: ./.output/public
@@ -96,6 +81,7 @@ jobs:
             id-token: write
         environment:
             name: github-pages
+            url: ${{ steps.deployment.outputs.page_url }}
         steps:
             - name: Deploy to GitHub Pages
               uses: actions/deploy-pages@v4
