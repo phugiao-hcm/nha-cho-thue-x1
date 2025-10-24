@@ -50,33 +50,13 @@ export default defineNuxtConfig({
     },
 
     // 🌐 SEO modules
-    modules: ["@nuxtjs/robots", "@nuxtjs/seo", "@nuxtjs/sitemap"],
+    modules: ["@nuxtjs/robots", "@nuxtjs/seo"],
 
     site: {
         url: "https://trodayroi.vn", // tên miền của bạn
     },
 
     // ✅ Sitemap cho SEO
-    sitemap: {
-        sitemapName: "sitemap.xml",
-        gzip: true,
-        exclude: ["/admin/**"],
-        defaults: {
-            changefreq: "daily",
-            priority: 0.8,
-        },
-        // routes: async () => {
-        //     const rooms = await fetch(
-        //         "https://trodayroi.vn/api/phong-tro"
-        //     ).then((res) => res.json());
-        //     return rooms.map((r: any) => ({
-        //         url: `/phong-tro/${r.slug}-${r.id}`,
-        //         lastmod: r.updatedAt || new Date().toISOString(),
-        //         priority: 0.9,
-        //     }));
-        // },
-    },
-
     // ✅ Robots.txt
     robots: {
         rules: [
