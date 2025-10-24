@@ -16,6 +16,13 @@ function slugifyTitle(title = "") {
         .toLowerCase();
 }
 
+// 👉 Chuyển ngày sang chuẩn ISO 8601
+function formatISO(dateStr) {
+    if (!dateStr) return new Date().toISOString(); // fallback
+    const d = new Date(dateStr);
+    return d.toISOString(); // ví dụ: 2025-10-24T03:33:00.000Z
+}
+
 const generateSitemap = async () => {
     try {
         const res = await fetch(API_URL, {
@@ -37,11 +44,11 @@ const generateSitemap = async () => {
         const urls = rooms
             .map(
                 (r) => `
-    <url>
-      <loc>${BASE_URL}/phong-tro/${slugifyTitle(r.title)}-${r.id}</loc>
-      <lastmod>${r.createTime || new Date().toISOString()}</lastmod>
-      <priority>0.9</priority>
-    </url>`
+  <url>
+    <loc>${BASE_URL}/phong-tro/${slugifyTitle(r.title)}-${r.id}</loc>
+    <lastmod>${formatISO(r.createTime)}</lastmod>
+    <priority>0.9</priority>
+  </url>`
             )
             .join("\n");
 
