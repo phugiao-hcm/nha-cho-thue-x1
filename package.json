@@ -2,12 +2,14 @@
     "name": "trodayroi.vn",
     "private": true,
     "type": "module",
-    "version": "1.0.0",
+    "version": "1.1.0",
     "scripts": {
-        "build": "nuxt build",
         "dev": "nuxt dev",
-        "generate": "nuxt generate",
         "preview": "nuxt preview",
+        "build": "nuxt build",
+        "generate": "nuxt generate",
+        "sitemap": "node scripts/generate-sitemap.js",
+        "deploy": "npm run generate && npm run sitemap && gh-pages -d .output/public",
         "postinstall": "nuxt prepare"
     },
     "dependencies": {
