@@ -6,7 +6,7 @@
     "scripts": {
         "dev": "nuxt dev",
         "preview": "nuxt preview",
-        "build": "nuxt build",
+        "build": "node scripts/generate-sitemap.js && nuxt build",
         "generate": "nuxt generate",
         "sitemap": "node scripts/generate-sitemap.js",
         "deploy": "npm run generate && npm run sitemap && gh-pages -d .output/public",
