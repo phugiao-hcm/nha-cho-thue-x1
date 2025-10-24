@@ -1,95 +1,5 @@
-# # https://github.com/actions/deploy-pages#usage
-# name: Deploy to GitHub Pages
-# on:
-#     workflow_dispatch:
-#     push:
-#         branches:
-#             - main
-# jobs:
-#     build:
-#         runs-on: ubuntu-latest
-#         steps:
-#             - uses: actions/checkout@v4
-#             - run: corepack enable
-#             - uses: actions/setup-node@v4
-#               with:
-#                   node-version: "20"
-#             # Pick your own package manager and build script
-#             - run: npm install
-
-#             # Build project
-#             - run: npx nuxt build --preset github_pages
-#             - name: Upload artifact
-#               uses: actions/upload-pages-artifact@v3
-#               with:
-#                   path: ./.output/public
-#     # Deployment job
-#     deploy:
-#         # Add a dependency to the build job
-#         needs: build
-#         # Grant GITHUB_TOKEN the permissions required to make a Pages deployment
-#         permissions:
-#             pages: write # to deploy to Pages
-#             id-token: write # to verify the deployment originates from an appropriate source
-#         # Deploy to the github_pages environment
-#         environment:
-#             name: github-pages
-#             url: ${{ steps.deployment.outputs.page_url }}
-#         # Specify runner + deployment step
-#         runs-on: ubuntu-latest
-#         steps:
-#             - name: Deploy to GitHub Pages
-#               id: deployment
-#               uses: actions/deploy-pages@v4
-
 # .github/workflows/deploy.yml
-# name: Deploy to GitHub Pages
-
-# on:
-#     workflow_dispatch:
-#     push:
-#         branches:
-#             - main
-
-# jobs:
-#     build:
-#         runs-on: ubuntu-latest
-#         steps:
-#             - uses: actions/checkout@v4
-
-#             - name: Setup Node.js
-#               uses: actions/setup-node@v4
-#               with:
-#                   node-version: "20"
-
-#             - name: Install dependencies
-#               run: yarn install
-
-#             - name: Build Nuxt
-#               run: yarn build
-
-#             - name: Upload artifact for Pages
-#             - run: npx nuxt build --preset github_pages
-#             - name: Upload artifact
-#               uses: actions/upload-pages-artifact@v3
-#               with:
-#                   path: ./.output/public
-
-#     deploy:
-#         needs: build
-#         runs-on: ubuntu-latest
-#         permissions:
-#             pages: write
-#             id-token: write
-#         environment:
-#             name: github-pages
-#             url: ${{ steps.deployment.outputs.page_url }}
-#         steps:
-#             - name: Deploy to GitHub Pages
-#               uses: actions/deploy-pages@v4
-
-# .github/workflows/deploy.yml
-name: Deploy Nuxt 4 to GitHub Pages
+name: Deploy to GitHub Pages
 
 on:
     workflow_dispatch:
@@ -101,31 +11,30 @@ jobs:
     build:
         runs-on: ubuntu-latest
         steps:
-            - name: Checkout repository
-              uses: actions/checkout@v4
+            # Checkout code
+            - uses: actions/checkout@v4
 
-            - name: Enable Corepack
-              run: corepack enable
-
+            # Set up Node.js
             - name: Setup Node.js
               uses: actions/setup-node@v4
               with:
                   node-version: "20"
 
+            # Install dependencies
             - name: Install dependencies
               run: yarn install
 
-            - name: Build Nuxt SPA for GitHub Pages
-              run: yarn build -- --preset github_pages
+            # Build Nuxt
+            - name: Build Nuxt
+              run: yarn build
 
-            - name: Generate sitemap
-              run: node scripts/generate-sitemap.js
-
+            # Copy sitemap tĩnh vào public folder
             - name: Copy sitemap to public folder
               run: |
                   mkdir -p ./.output/public
                   cp sitemap.xml ./.output/public/sitemap.xml
 
+            # Upload artifact cho GitHub Pages
             - name: Upload artifact for Pages
               uses: actions/upload-pages-artifact@v3
               with:
