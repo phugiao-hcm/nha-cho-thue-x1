@@ -28,7 +28,7 @@ jobs:
             - name: Copy static sitemap
               run: |
                   mkdir -p ./.output/public
-                  cp sitemap.xml ./.output/public/sitemap.xml
+                  cp ././public/sitemap.xml ./.output/public/sitemap.xml
 
             - name: Upload artifact for Pages
               uses: actions/upload-pages-artifact@v3
