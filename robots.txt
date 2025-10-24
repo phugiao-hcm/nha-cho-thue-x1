@@ -1,0 +1,6 @@
+# START nuxt-robots (indexable)
+User-agent: *
+Disallow: 
+
+Sitemap: https://trodayroi.vn/sitemap.xml
+# END nuxt-robots
