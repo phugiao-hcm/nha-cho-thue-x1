@@ -1,37 +1,35 @@
 # .github/workflows/deploy.yml
-name: Deploy to GitHub Pages
+name: Deploy Nuxt Static Site + Sitemap
 
 on:
-    workflow_dispatch:
     push:
         branches:
             - main
+    workflow_dispatch:
 
 jobs:
     build:
         runs-on: ubuntu-latest
         steps:
-            # Checkout repo
-            - uses: actions/checkout@v4
+            - name: Checkout code
+              uses: actions/checkout@v4
 
-            # Setup Node.js
             - name: Setup Node.js
               uses: actions/setup-node@v4
               with:
                   node-version: "20"
 
-            # Install dependencies
             - name: Install dependencies
               run: yarn install
 
-            # Build Nuxt
-            - name: Build Nuxt
-              run: yarn build
+            - name: Generate static site
+              run: yarn generate
 
-            # (Optional) If you have static generate step
-            # - run: yarn generate
+            - name: Copy static sitemap
+              run: |
+                  mkdir -p ./.output/public
+                  cp sitemap.xml ./.output/public/sitemap.xml
 
-            # ✅ Upload the entire public folder, including sitemap.xml
             - name: Upload artifact for Pages
               uses: actions/upload-pages-artifact@v3
               with:
