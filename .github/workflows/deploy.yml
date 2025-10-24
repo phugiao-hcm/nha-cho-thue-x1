@@ -19,7 +19,6 @@ jobs:
 
             # Build project
             - run: npx nuxt build --preset github_pages
-            - run: node scripts/generate-sitemap.mjs # ✅ generate sitemap động
             - name: Upload artifact
               uses: actions/upload-pages-artifact@v3
               with:
