@@ -1,4 +1,3 @@
-# .github/workflows/deploy.yml
 name: Deploy to GitHub Pages
 
 on:
@@ -11,30 +10,27 @@ jobs:
     build:
         runs-on: ubuntu-latest
         steps:
-            # Checkout code
             - uses: actions/checkout@v4
 
-            # Set up Node.js
             - name: Setup Node.js
               uses: actions/setup-node@v4
               with:
                   node-version: "20"
 
-            # Install dependencies
             - name: Install dependencies
               run: yarn install
 
-            # Build Nuxt
             - name: Build Nuxt
               run: yarn build
 
-            # Copy sitemap tĩnh vào public folder
+            - name: Generate sitemap
+              run: yarn sitemap
+
             - name: Copy sitemap to public folder
               run: |
                   mkdir -p ./.output/public
                   cp sitemap.xml ./.output/public/sitemap.xml
 
-            # Upload artifact cho GitHub Pages
             - name: Upload artifact for Pages
               uses: actions/upload-pages-artifact@v3
               with:
