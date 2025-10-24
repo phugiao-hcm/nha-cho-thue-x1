@@ -55,24 +55,15 @@ jobs:
     build:
         runs-on: ubuntu-latest
         steps:
-            - name: Checkout repo
-              uses: actions/checkout@v4
+            - uses: actions/checkout@v4
 
             - name: Setup Node.js
               uses: actions/setup-node@v4
               with:
                   node-version: "20"
 
-            - name: Enable Corepack
-              run: corepack enable
-
             - name: Install dependencies
               run: yarn install
-
-            - name: Copy sitemap.xml to public
-              run: |
-                  mkdir -p public
-                  cp sitemap.xml public/sitemap.xml
 
             - name: Build Nuxt
               run: yarn build
@@ -92,5 +83,4 @@ jobs:
             name: github-pages
         steps:
             - name: Deploy to GitHub Pages
-              id: deployment
               uses: actions/deploy-pages@v4
