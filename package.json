@@ -16,7 +16,6 @@
         "@amplitude/analytics-browser": "^2.23.5",
         "@nuxtjs/robots": "^5.5.1",
         "@nuxtjs/seo": "^3.1.0",
-        "@nuxtjs/sitemap": "^7.4.3",
         "@nuxtjs/tailwindcss": "^6.14.0",
         "@tailwindcss/vite": "^4.1.11",
         "firebase": "^12.1.0",
