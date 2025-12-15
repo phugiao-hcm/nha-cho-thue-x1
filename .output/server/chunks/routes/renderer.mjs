@@ -1,5 +1,5 @@
 import { createRenderer, getRequestDependencies, getPreloadLinks, getPrefetchLinks } from 'vue-bundle-renderer/runtime';
-import { j as joinRelativeURL, u as useRuntimeConfig, g as getResponseStatusText, a as getResponseStatus, d as defineRenderHandler, b as getQuery, c as createError, e as destr, f as getRouteRules, r as relative, h as joinURL, i as useNitroApp } from '../nitro/nitro.mjs';
+import { j as joinRelativeURL, u as useRuntimeConfig, g as getResponseStatusText, c as getResponseStatus, e as defineRenderHandler, f as getQuery, h as createError, d as destr, i as getRouteRules, k as hasProtocol, r as relative, l as joinURL, b as useNitroApp } from '../_/nitro.mjs';
 import { createHead as createHead$1, propsToString, renderSSRHead } from 'unhead/server';
 import { stringify, uneval } from 'devalue';
 import { toValue, isRef } from 'vue';
@@ -18,7 +18,6 @@ const VueResolver = (_, value) => {
 };
 
 const headSymbol = "usehead";
-// @__NO_SIDE_EFFECTS__
 function vueInstall(head) {
   const plugin = {
     install(app) {
@@ -30,7 +29,6 @@ function vueInstall(head) {
   return plugin.install;
 }
 
-// @__NO_SIDE_EFFECTS__
 function createHead(options = {}) {
   const head = createHead$1({
     ...options,
@@ -190,7 +188,7 @@ function setSSRError(ssrContext, error) {
 
 const renderSSRHeadOptions = {"omitLineBreaks":true};
 
-const entryFileName = "DRTLR0q9.js";
+const entryFileName = "DugwnXkm.js";
 
 globalThis.__buildAssetsURL = buildAssetsURL;
 globalThis.__publicAssetsURL = publicAssetsURL;
@@ -258,7 +256,7 @@ const renderer = defineRenderHandler(async (event) => {
     let path = entryPath;
     if (!path) {
       path = buildAssetsURL(entryFileName);
-      if (ssrContext.runtimeConfig.app.cdnURL || /^(?:\/|\.+\/)/.test(path)) {
+      if (/^(?:\/|\.+\/)/.test(path) || hasProtocol(path, { acceptRelative: true })) {
         entryPath = path;
       } else {
         path = relative(event.path.replace(/\/[^/]+$/, "/"), joinURL("/", path));
@@ -347,14 +345,7 @@ const renderer = defineRenderHandler(async (event) => {
   };
 });
 function normalizeChunks(chunks) {
-  const result = [];
-  for (const _chunk of chunks) {
-    const chunk = _chunk?.trim();
-    if (chunk) {
-      result.push(chunk);
-    }
-  }
-  return result;
+  return chunks.filter(Boolean).map((i) => i.trim());
 }
 function joinTags(tags) {
   return tags.join("");
