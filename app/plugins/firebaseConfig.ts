@@ -9,7 +9,7 @@ const firebaseConfig = {
     storageBucket: "nha-cho-thue-x1.firebasestorage.app",
     messagingSenderId: "295176364130",
     appId: "1:295176364130:web:e11cdbec5626dc9a8df13b",
-    measurementId: "G-862G2PFH3V"
+    measurementId: process.env.NUXT_PUBLIC_FIREBASE_MEASUREMENT_ID || "G-862G2PFH3V"
 };
 
 // Initialize Firebase
