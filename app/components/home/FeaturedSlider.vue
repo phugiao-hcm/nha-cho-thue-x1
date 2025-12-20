@@ -2,11 +2,11 @@
     <section class="py-10 px-4 bg-white">
         <div class="max-w-7xl mx-auto relative">
             <h2
-                class="text-4xl font-extrabold text-orange-500 mb-3 relative inline-block"
+                class="text-4xl font-extrabold text-blue-500 mb-3 relative inline-block"
             >
                 Phòng tiềm năng
                 <span
-                    class="absolute left-0 -bottom-2 w-30 h-1 bg-orange-500 rounded-full"
+                    class="absolute left-0 -bottom-2 w-30 h-1 bg-blue-500 rounded-full"
                 ></span>
             </h2>
             <p class="text-gray-600 mb-8 max-w-xl">
@@ -51,7 +51,7 @@
                                 <h3 class="text-lg font-semibold">
                                     {{ item.title }}
                                 </h3>
-                                <p class="text-orange-600 font-bold mt-2">
+                                <p class="text-blue-600 font-bold mt-2">
                                     {{ item.price }} tỷ
                                 </p>
                             </div>

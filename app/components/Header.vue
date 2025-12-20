@@ -7,14 +7,14 @@
             <NuxtLink
                 to="/"
                 @click="onClickHomeLogo"
-                class="text-2xl font-extrabold text-orange-600"
+                class="text-2xl font-bold text-blue-500"
             >
                 <img
                     src="/images/og-image.png"
                     alt="Logo"
-                    class="h-8 inline mr-2"
+                    class="h-10 inline"
                 />
-                Trọ Đây Rồi
+                trodayroi.vn
             </NuxtLink>
 
             <!-- Desktop Navigation + Button -->
@@ -23,19 +23,19 @@
                     <NuxtLink
                         to="/"
                         @click="onClickHome"
-                        class="hover:text-orange-600 transition-colors"
+                        class="hover:text-blue-600 transition-colors"
                         >Trang chủ</NuxtLink
                     >
                     <NuxtLink
                         to="/posts"
                         @click="onClickPosts"
-                        class="hover:text-orange-600 transition-colors"
+                        class="hover:text-blue-600 transition-colors"
                         >Phòng trọ</NuxtLink
                     >
                     <NuxtLink
                         to="/about"
                         @click="onClickAboutUs"
-                        class="hover:text-orange-600 transition-colors"
+                        class="hover:text-blue-600 transition-colors"
                         >Về chúng tôi</NuxtLink
                     >
                 </nav>
@@ -44,7 +44,7 @@
                 <NuxtLink
                     to="/about"
                     @click="onClickPostFree"
-                    class="ml-4 bg-white hover:bg-orange-100 border text-orange-600 font-semibold py-2 px-4 rounded-lg transition-colors"
+                    class="ml-4 bg-white hover:bg-blue-100 border text-blue-600 font-semibold py-2 px-4 rounded-lg transition-colors"
                 >
                     Đăng tin miễn phí
                 </NuxtLink>
@@ -94,19 +94,19 @@
             <NuxtLink
                 to="/"
                 @click="onClickHome"
-                class="block hover:text-orange-600 transition-colors"
+                class="block hover:text-blue-600 transition-colors"
                 >Trang chủ</NuxtLink
             >
             <NuxtLink
                 to="/posts"
                 @click="onClickPosts"
-                class="block hover:text-orange-600 transition-colors"
+                class="block hover:text-blue-600 transition-colors"
                 >Phòng trọ</NuxtLink
             >
             <NuxtLink
                 to="/about"
                 @click="onClickAboutUs"
-                class="block hover:text-orange-600 transition-colors"
+                class="block hover:text-blue-600 transition-colors"
                 >Về chúng tôi</NuxtLink
             >
 
@@ -114,7 +114,7 @@
             <NuxtLink
                 to="/about"
                 @click="onClickPostFree"
-                class="block mt-2 bg-white hover:bg-orange-100 border text-orange-600 font-semibold py-2 px-4 rounded-lg text-center transition-colors"
+                class="block mt-2 bg-white hover:bg-blue-100 border text-blue-600 font-semibold py-2 px-4 rounded-lg text-center transition-colors"
             >
                 Đăng tin miễn phí
             </NuxtLink>
