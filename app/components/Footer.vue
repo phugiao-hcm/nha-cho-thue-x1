@@ -45,7 +45,7 @@
                     </a>
                 </div>
                 <p class="text-sm text-gray-400 mt-4">
-                    Hotline/Zalo:
+                    Hotline/Zalo tư vấn:
                     <a
                         href="tel:0937704598"
                         class="text-blue-400 hover:underline"

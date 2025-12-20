@@ -3,7 +3,7 @@
         <!-- Nút mở filter -->
         <button
             @click="toggleFilter"
-            class="px-4 py-2 bg-orange-500 text-white rounded-lg"
+            class="px-4 py-2 bg-blue-500 text-white rounded-lg"
         >
             Bộ lọc
         </button>
@@ -73,7 +73,7 @@
                     </button>
                     <button
                         @click="applyFilters"
-                        class="px-4 py-2 bg-orange-500 text-white rounded-lg"
+                        class="px-4 py-2 bg-blue-500 text-white rounded-lg"
                     >
                         Áp dụng
                     </button>
