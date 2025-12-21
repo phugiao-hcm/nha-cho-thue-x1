@@ -33,6 +33,12 @@
                         >Phòng trọ</NuxtLink
                     >
                     <NuxtLink
+                        to="/news"
+                        @click="onClickNews"
+                        class="hover:text-blue-600 transition-colors"
+                        >Tin tức</NuxtLink
+                    >
+                    <NuxtLink
                         to="/about"
                         @click="onClickAboutUs"
                         class="hover:text-blue-600 transition-colors"
@@ -104,6 +110,12 @@
                 >Phòng trọ</NuxtLink
             >
             <NuxtLink
+                to="/news"
+                @click="onClickNews"
+                class="block hover:text-blue-600 transition-colors"
+                >Tin tức</NuxtLink
+            >
+            <NuxtLink
                 to="/about"
                 @click="onClickAboutUs"
                 class="block hover:text-blue-600 transition-colors"
@@ -139,6 +151,12 @@ const onClickPostFree = () => {
     );
 };
 
+const onClickNews = () => {
+    isOpen.value = false;
+    $amplitude.track("button_header_clicked_news", {
+        label: "(Header) - Tin tức",
+    });
+};
 const onClickAboutUs = () => {
     isOpen.value = false;
     $amplitude.track("button_header_clicked_about_us", {

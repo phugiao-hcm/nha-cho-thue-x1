@@ -17,6 +17,9 @@ const sources = [
         },
         "urls": [
             {
+                "loc": "/news"
+            },
+            {
                 "loc": "/about"
             },
             {
