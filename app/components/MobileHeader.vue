@@ -46,11 +46,11 @@ const onShare = async () => {
     class="md:hidden sticky top-0 z-50 bg-white/90 backdrop-blur border-b border-gray-200"
     style="padding-top: env(safe-area-inset-top)"
   >
-    <div class="flex items-center h-12 px-3 gap-2">
+    <div class="flex items-center h-16 px-3 gap-2">
       <!-- 🔙 Back -->
       <button
         @click="goBack"
-        class="w-7 h-7 flex items-center justify-center rounded-full border border-gray-300 active:scale-90 transition"
+        class="w-8 h-8 flex items-center justify-center rounded-full border border-gray-300 active:scale-90 transition"
         aria-label="Back"
       >
         <ArrowLeftIcon class="w-4 h-4" />
@@ -64,7 +64,7 @@ const onShare = async () => {
       <!-- 🏠 Home -->
       <button
         @click="goHome"
-        class="ml-auto w-7 h-7 flex items-center justify-center rounded-full border border-gray-300 active:scale-90 transition"
+        class="ml-auto w-8 h-8 flex items-center justify-center rounded-full border border-gray-300 active:scale-90 transition"
         aria-label="Home"
       >
         <HomeIcon class="w-4 h-4" />
@@ -73,7 +73,7 @@ const onShare = async () => {
       <!-- 🔗 Share -->
       <button
         @click="onShare"
-        class="w-7 h-7 flex items-center justify-center rounded-full border border-gray-300 active:scale-90 transition"
+        class="w-8 h-8 flex items-center justify-center rounded-full border border-gray-300 active:scale-90 transition"
         aria-label="Share"
       >
         <ShareIcon class="w-4 h-4" />
