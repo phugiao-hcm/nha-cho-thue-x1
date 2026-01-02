@@ -61,6 +61,7 @@
           :index="currentIndex"
           @hide="visible = false"
           :moveDisabled="true"
+          class="custom-lightbox"
         />
       </div>
 
@@ -326,5 +327,59 @@ useHead(() => ({
 /* Highlight thumbnail active */
 .swiper-slide-thumb-active img {
   border: 2px solid #f97316; /* Tailwind orange-500 */
+}
+/* Navigation container */
+.swiper-button-prev,
+.swiper-button-next {
+  width: 36px;
+  height: 36px;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+  color: #111;
+  transition: all 0.2s ease;
+}
+
+/* Hover & active */
+.swiper-button-prev:hover,
+.swiper-button-next:hover {
+  transform: scale(1.1);
+}
+
+.swiper-button-prev:active,
+.swiper-button-next:active {
+  transform: scale(0.95);
+}
+
+/* Icon size */
+.swiper-button-prev::after,
+.swiper-button-next::after {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+/* Position đẹp hơn */
+.swiper-button-prev {
+  left: 8px;
+}
+
+.swiper-button-next {
+  right: 8px;
+}
+
+.custom-lightbox {
+  background: white;
+}
+
+.btn__next,
+.btn__prev {
+  border: 1px solid rgba(255, 255, 255, 0.95);
+  border-radius: 50%;
+  padding: 6px;
+
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+  color: #111 !important;
+  transition: all 0.2s ease;
 }
 </style>
