@@ -15,7 +15,6 @@
           :class="{ active: isActive('/') }"
         >
           <HomeIcon class="w-4 h-4" />
-          <el-icon><HomeFilled /></el-icon>
           <span>Trang chủ</span>
         </NuxtLink>
       </li>

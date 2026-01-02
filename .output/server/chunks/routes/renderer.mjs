@@ -190,7 +190,7 @@ function setSSRError(ssrContext, error) {
 
 const renderSSRHeadOptions = {"omitLineBreaks":true};
 
-const entryFileName = "nw0rEdOq.js";
+const entryFileName = "CC_2_r_Z.js";
 
 globalThis.__buildAssetsURL = buildAssetsURL;
 globalThis.__publicAssetsURL = publicAssetsURL;
