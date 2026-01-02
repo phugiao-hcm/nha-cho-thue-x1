@@ -49,7 +49,7 @@ const client_manifest = {
     "module": true,
     "prefetch": true,
     "preload": true,
-    "file": "CC_2_r_Z.js",
+    "file": "DnH4aK9i.js",
     "name": "entry",
     "src": "../node_modules/nuxt/dist/app/entry.js",
     "isEntry": true,
@@ -59,11 +59,11 @@ const client_manifest = {
       "../node_modules/nuxt/dist/app/components/error-500.vue"
     ],
     "css": [
-      "entry.dsFzIZCE.css"
+      "entry.C4nH1jCl.css"
     ]
   },
-  "entry.dsFzIZCE.css": {
-    "file": "entry.dsFzIZCE.css",
+  "entry.C4nH1jCl.css": {
+    "file": "entry.C4nH1jCl.css",
     "resourceType": "style",
     "prefetch": true,
     "preload": true
@@ -122,7 +122,7 @@ const client_manifest = {
     "module": true,
     "prefetch": true,
     "preload": true,
-    "file": "B2IYXlhl.js",
+    "file": "JabkWKn1.js",
     "name": "default",
     "src": "layouts/default.vue",
     "isDynamicEntry": true,
@@ -197,7 +197,7 @@ const client_manifest = {
     "module": true,
     "prefetch": true,
     "preload": true,
-    "file": "D3W0nnSX.js",
+    "file": "BN5-ckd_.js",
     "name": "_slug_",
     "src": "pages/phong-tro/[slug].vue",
     "isDynamicEntry": true,
@@ -207,11 +207,11 @@ const client_manifest = {
       "../node_modules/nuxt/dist/app/entry.js"
     ],
     "css": [
-      "_slug_.BX21hjTd.css"
+      "_slug_.DR-94Vjo.css"
     ]
   },
-  "_slug_.BX21hjTd.css": {
-    "file": "_slug_.BX21hjTd.css",
+  "_slug_.DR-94Vjo.css": {
+    "file": "_slug_.DR-94Vjo.css",
     "resourceType": "style",
     "prefetch": true,
     "preload": true

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { HomeIcon, ArrowLeftIcon } from "@heroicons/vue/24/outline";
+import { HomeIcon, ArrowLeftIcon, ShareIcon } from "@heroicons/vue/24/outline";
 
 defineProps<{
   title: string;
@@ -17,6 +17,26 @@ const goBack = () => {
 
 const goHome = () => {
   router.push("/");
+};
+
+/* 🔗 Share (Facebook / Zalo style) */
+const onShare = async () => {
+  const shareData = {
+    title: document.title,
+    text: document.title,
+    url: window.location.href,
+  };
+
+  try {
+    if (navigator.share) {
+      await navigator.share(shareData);
+    } else {
+      await navigator.clipboard.writeText(shareData.url);
+      alert("Đã sao chép link");
+    }
+  } catch (err) {
+    console.error("Share canceled", err);
+  }
 };
 </script>
 
@@ -48,6 +68,15 @@ const goHome = () => {
         aria-label="Home"
       >
         <HomeIcon class="w-4 h-4" />
+      </button>
+
+      <!-- 🔗 Share -->
+      <button
+        @click="onShare"
+        class="w-7 h-7 flex items-center justify-center rounded-full border border-gray-300 active:scale-90 transition"
+        aria-label="Share"
+      >
+        <ShareIcon class="w-4 h-4" />
       </button>
     </div>
   </div>
