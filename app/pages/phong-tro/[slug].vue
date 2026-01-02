@@ -169,7 +169,7 @@
         <iframe
           :src="`https://www.google.com/maps?q=${property.latitude},${property.longitude}&hl=vi&z=15&output=embed`"
           width="100%"
-          height="450"
+          height="350"
           style="border: 0"
           allowfullscreen=""
           loading="lazy"
@@ -301,8 +301,6 @@ const facilityTexts = (facilities) => {
     facilities.includes(item.value)
   ).map((item) => item.label);
 };
-
-// const mapUrl = `https://www.google.com/maps/embed/v1/place?key=YOUR_GOOGLE_MAPS_API_KEY&q=${property.latitude},${property.longitude}`;
 
 definePageMeta({
   alias: ["/phong-tro/:slug"], // URL phụ
